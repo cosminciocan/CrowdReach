@@ -15,12 +15,9 @@ import java.util.Random;
 import static junit.framework.Assert.*;
 
 public class RegisterPage extends TestBase {
-    public String registerPage = BaseURL + registerPath;
+    public String registerPage = baseUrl + registerPath;
 
     // URL
-    public void openPage() {
-        driver.get(registerPage);
-    }
 
     //    Page Elements
     @FindBy(className = "alreadyHaveAccount")
@@ -40,10 +37,17 @@ public class RegisterPage extends TestBase {
 
 
     //     Variables
+    public String typeOfBusinessDropdown = "businessType";
+
+
+
+    public void openPage() {
+        driver.get(registerPage);
+    }
 
 
     public void setEmailField() {
-        emailValue = (generateRandomString(8) + atTestDomain);
+        emailValue = (generateRandomString(8) + userNameEmailDomain);
         waitForElement(alreadyMemberDiv, defaultTimeOut);
         elementContainsText(alreadyMemberDiv, "Already have an account?");
         emailField.sendKeys(emailValue);
@@ -74,9 +78,9 @@ public class RegisterPage extends TestBase {
     public void confirmRegistered() {
         tryClick(registerButton, defaultTimeOut);
         waitForElement(successDiv, defaultTimeOut);
-        Sleep(0.5);
+//        Sleep(0.5);
+        tryClick(successDiv,defaultTimeOut);
         assertTrue(elementContainsText(successDiv, "Registration was successful"));
-
     }
 
 

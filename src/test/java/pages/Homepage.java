@@ -16,20 +16,19 @@ public class Homepage extends TestBase{
 
     // URL
 
-    public String url = Driver.config().getProperty("rootUrl");
 
-//    public static String logInUrl = BaseURL + logInPath;
-    public static String logOutUrl = BaseURL + "";
+    public static String logInUrl = baseUrl + loginPath;
+    public static String logOutUrl = baseUrl + "";
 
     // METHODS
 
 
     public void openPage(){
-        Driver.getWebdriver().get(BaseURL);
+        Driver.getWebdriver().get(baseUrl);
     }
 
     public void userLogsIn(){
-        openUrl(url);
+        openUrl(logInUrl);
     }
 
     public void logOut(){

@@ -11,7 +11,7 @@ import static junit.framework.Assert.*;
 public class LoginPage extends TestBase {
 
     // URL
-    public static String url = Driver.config().getProperty("rootUrl") + Driver.config().getProperty("loginPath");
+    public static String logInUrl = baseUrl + loginPath;
 
     Driver dv = new Driver();
     // Page Elements
@@ -23,12 +23,10 @@ public class LoginPage extends TestBase {
     public WebElement loginButton;
 
 
-    RegisterPage registerPage = new RegisterPage();
-
 
     // METHODS
     public void openPage() {
-        driver.get(url);
+        driver.get(logInUrl);
     }
 
     public void login(String username, String password) {

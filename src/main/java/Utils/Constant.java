@@ -3,6 +3,7 @@ package Utils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import webdriver.Driver;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,26 +11,22 @@ import java.util.Date;
 
 public class Constant {
 
-    //BASE URL
-    public static final String BaseURL = "http://localhost:4391";
-    //    PATHS
-    public static final String logOutPath = "";
-//    public static final String logInPath = "/#/login";
-    public static final String registerPath = "/#/register";
+//    URL
+    public static String baseUrl = Driver.config().getProperty("rootUrl");
+    public static String registerPath = Driver.config().getProperty("registerPath");
+    public static String loginPath = Driver.config().getProperty("loginPath");
+    public static String logOutPath = Driver.config().getProperty("logOutPath");
 
 
     //CREDENTIALS
-    public static final String volunteerUser = "";
-    public static final String volunteerPassword = "";
-    public String emailValue;
-    public String userNameValue = "cosmin1";
-    public String userPasswordValue = "123456";
-    public String typeOfBusinessDropdown = "businessType";
+    public String userNameValue = Driver.config().getProperty("usernameValue");
+    public String userPasswordValue = Driver.config().getProperty("userPasswordValue");
+    public String emailValue = Driver.config().getProperty("userEmailValue");
+    public String userNameEmailDomain = Driver.config().getProperty("userNameEmailDomain");
 
     //VALUES
-    public static final String atTestDomain = "@sfpTest.com";
-    public static final String highReservationGroupSize = "200"; // This should be a number above 100
-    public static final int defaultTimeOut = 5;
+    public static int defaultTimeOut = Integer.parseInt(Driver.config().getProperty("defaultTimeOut"));
+//    public static final int defaultTimeOut = 5;
 
 
     //time now value

@@ -15,7 +15,10 @@ public class Homepage extends TestBase{
     RegisterPage registerPage = new RegisterPage();
 
     // URL
-    public static String logInUrl = BaseURL + logInPath;
+
+    public String url = Driver.config().getProperty("rootUrl");
+
+//    public static String logInUrl = BaseURL + logInPath;
     public static String logOutUrl = BaseURL + "";
 
     // METHODS
@@ -26,7 +29,7 @@ public class Homepage extends TestBase{
     }
 
     public void userLogsIn(){
-        openUrl(logInUrl);
+        openUrl(url);
     }
 
     public void logOut(){

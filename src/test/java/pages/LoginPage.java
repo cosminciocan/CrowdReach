@@ -1,7 +1,6 @@
 package pages;
 
 import Utils.TestBase;
-import junit.framework.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import webdriver.Driver;
@@ -12,8 +11,9 @@ import static junit.framework.Assert.*;
 public class LoginPage extends TestBase {
 
     // URL
-    public static String url = BaseURL + logInPath;
+    public static String url = Driver.config().getProperty("rootUrl") + Driver.config().getProperty("loginPath");
 
+    Driver dv = new Driver();
     // Page Elements
     @FindBy(id = "loginUser")
     public WebElement usernameField;
@@ -30,7 +30,6 @@ public class LoginPage extends TestBase {
     public void openPage() {
         driver.get(url);
     }
-
 
     public void login(String username, String password) {
         waitForElement(usernameField, defaultTimeOut);

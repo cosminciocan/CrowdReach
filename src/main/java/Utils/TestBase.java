@@ -7,26 +7,30 @@ import org.openqa.selenium.*;
 import org.w3c.dom.DocumentType;
 import webdriver.Driver;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 
 public abstract class TestBase extends Constant {
 
     public static WebDriver driver;
-
     //    public static JavascriptExecutor js;
     static {
         startSuite();
     }
 
+
     private static void startSuite() {
-        try {
-            Driver.initWebdriver();
-            driver = Driver.getWebdriver();
-        } catch (Exception e) {
+            try {
+                Driver.initWebdriver();
+                driver = Driver.getWebdriver();
+            } catch (Exception e) {
             System.out.println("Exception when start suite:\n" + e);
         }
     }

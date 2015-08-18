@@ -14,7 +14,7 @@ public class Constant {
     public static final String BaseURL = "http://localhost:4391";
     //    PATHS
     public static final String logOutPath = "";
-    public static final String logInPath = "/#/login";
+//    public static final String logInPath = "/#/login";
     public static final String registerPath = "/#/register";
 
 

@@ -6,44 +6,41 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import webdriver.Driver;
 
+import static junit.framework.Assert.*;
+
 
 public class LoginPage extends TestBase {
 
     // URL
-    public static String url = BaseURL;
+    public static String url = BaseURL + logInPath;
 
-    // LOCATORS
-    @FindBy(id = "EmailId")
+    // Page Elements
+    @FindBy(id = "loginUser")
     public WebElement usernameField;
-    @FindBy(id = "Password")
+    @FindBy(id = "loginPassword")
     public WebElement passwordField;
-    @FindBy(id = "btnSubmit")
-    public WebElement continueButton;
+    @FindBy(className = "btn-block")
+    public WebElement loginButton;
+
+
+    RegisterPage registerPage = new RegisterPage();
+
 
     // METHODS
-    public void openPage(){
-        Driver.getWebdriver().get(url);
+    public void openPage() {
+        driver.get(url);
     }
 
-    public void volunteerLogin(){
-        usernameField.sendKeys(volunteerUser);
-        continueButton.click();
-        waitForElement(passwordField, defaultTimeOut);
-        passwordField.sendKeys(volunteerPassword);
-        continueButton.click();
+
+    public void login(String username, String password) {
+        waitForElement(usernameField, defaultTimeOut);
+        usernameField.sendKeys(username);
+        passwordField.sendKeys(password);
+        loginButton.click();
     }
 
-//    public void reviewerLogin(){
-//        usernameField.sendKeys(reviewerUsername);
-//        passwordField.sendKeys(reviewerPassword);
-//        loginButton.click();
-//        waitForElement(profileLink, 5);
-//    }
-//
-//    public void adminLogin(){
-//        usernameField.sendKeys(adminUsername);
-//        passwordField.sendKeys(adminPassword);
-//        loginButton.click();
-//        waitForElement(profileLink, 5);
-//    }
+    public void confirmLoggedIn() {
+        waitForElement(successDiv, defaultTimeOut);
+        assertTrue(elementContainsText(successDiv, "Login was successful"));
+    }
 }

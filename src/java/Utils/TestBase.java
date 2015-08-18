@@ -6,17 +6,18 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.w3c.dom.DocumentType;
 import webdriver.Driver;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 
-
 public abstract class TestBase extends Constant {
 
     public static WebDriver driver;
-//    public static JavascriptExecutor js;
+
+    //    public static JavascriptExecutor js;
     static {
         startSuite();
     }
@@ -37,7 +38,7 @@ public abstract class TestBase extends Constant {
         int timeOutTime = 0;
         boolean present = false;
 
-        while(!isElementPresent(element)){
+        while (!isElementPresent(element)) {
             try {
                 Thread.sleep(100);
             } catch (Exception e) {
@@ -45,7 +46,7 @@ public abstract class TestBase extends Constant {
 
             }
             timeOutTime = timeOutTime + 100;
-            if(timeOutTime == timeOutLimit){
+            if (timeOutTime == timeOutLimit) {
                 System.err.println("Timed out while waiting for the element!");
                 present = true;
                 break;
@@ -55,7 +56,7 @@ public abstract class TestBase extends Constant {
         Assert.assertFalse(present);
     }
 
-//  This method returns a boolean value if the element is found/not found
+    //  This method returns a boolean value if the element is found/not found
     public static boolean isElementPresent(WebElement webelement) {
         boolean exists = false;
 
@@ -74,25 +75,25 @@ public abstract class TestBase extends Constant {
         return exists;
     }
 
-    public String generateRandomString(int length){
+    public String generateRandomString(int length) {
         return RandomStringUtils.randomAlphabetic(length);
     }
 
-    public String generateRandomNumber(int length){
+    public String generateRandomNumber(int length) {
         return RandomStringUtils.randomNumeric(length);
     }
 
-    public String generateRandomAlphaNumeric(int length){
+    public String generateRandomAlphaNumeric(int length) {
         return RandomStringUtils.randomAlphanumeric(length);
     }
 
-    public static String setDateNow() throws ParseException{
+    public static String setDateNow() throws ParseException {
         java.util.Date d = new Date();
         SimpleDateFormat sd = new SimpleDateFormat("MM/dd/yyyy");
         return sd.format(d);
     }
 
-    public void Sleep(double seconds){
+    public void Sleep(double seconds) {
         double milliseconds = seconds * 1000;
         try {
             Thread.sleep((long) milliseconds);
@@ -102,7 +103,7 @@ public abstract class TestBase extends Constant {
     }
 
     public boolean isTextPresent(String text) {
-        while(isAlertPresent()){
+        while (isAlertPresent()) {
             driver.switchTo().alert().accept();
         }
         if (Driver.getWebdriver().getPageSource().contains(text)) {
@@ -114,39 +115,39 @@ public abstract class TestBase extends Constant {
         }
     }
 
-    public boolean elementContainsText(WebElement e, String text){
-        waitForElement(e,defaultTimeOut);
-        if (e.getText().contains(text)){
-           System.out.println("Text found!");
+    public boolean elementContainsText(WebElement e, String text) {
+        waitForElement(e, defaultTimeOut);
+        if (e.getText().contains(text)) {
+            System.out.println("Text found!");
             return true;
-        }else {
+        } else {
             try {
-                if(e.getAttribute("value").contains(text)) {
+                if (e.getAttribute("value").contains(text)) {
                     System.out.println("Text found!");
                     return true;
-                }else{
+                } else {
                     System.out.println("Text not found!");
                     return false;
                 }
-            }catch (NullPointerException error){
+            } catch (NullPointerException error) {
                 System.out.println("Text not found!");
                 return false;
             }
         }
     }
 
-    public void waitUntilElementNotPresent(WebElement element, int timeOutSeconds){
+    public void waitUntilElementNotPresent(WebElement element, int timeOutSeconds) {
         int timeOutTime = 0;
         timeOutSeconds = timeOutSeconds * 1000;
         boolean present = false;
-        while(isElementPresent(element)){
+        while (isElementPresent(element)) {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             timeOutTime = timeOutTime + 100;
-            if(timeOutTime == timeOutSeconds){
+            if (timeOutTime == timeOutSeconds) {
                 System.err.println("Timed out waiting for the element to disappear!");
                 present = true;
                 break;
@@ -155,17 +156,16 @@ public abstract class TestBase extends Constant {
         Assert.assertFalse(present);
     }
 
-    public boolean isAlertPresent(){
-        try{
+    public boolean isAlertPresent() {
+        try {
             driver.switchTo().alert();
             return true;
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
 
-    public void tryClick(WebElement element, int timeOutSeconds){
+    public void tryClick(WebElement element, int timeOutSeconds) {
         boolean found;
         int count = 0; //Count needed for checking the Make Reservation button
         timeOutSeconds = timeOutSeconds * 10;
@@ -177,19 +177,25 @@ public abstract class TestBase extends Constant {
                 found = false;
                 Sleep(0.1);
             }
-            if (count == timeOutSeconds){
+            if (count == timeOutSeconds) {
                 Assert.fail("Element not found!");
                 break;
             }
             count++;
-        } while(!found);
+        } while (!found);
     }
-    public void openUrl(String url){
+
+    public void openUrl(String url) {
         Driver.getWebdriver().get(url);
-        while(isAlertPresent()){
+        while (isAlertPresent()) {
             driver.switchTo().alert().accept();
         }
 
+    }
+
+    public int randomWithRange(int min, int max) {
+        int range = (max - min);
+        return (int) (Math.random() * range) + min;
     }
 
 ////    Run JS

@@ -12,17 +12,21 @@ import java.util.List;
 
 
 public class Homepage extends TestBase{
+    RegisterPage registerPage = new RegisterPage();
 
     // URL
-    public static String logOutUrl = BaseURL + logOutPath;
+    public static String logInUrl = BaseURL + logInPath;
+    public static String logOutUrl = BaseURL + "";
 
     // METHODS
-    public void openUIPage(){
-        openUrl(BaseURL);
-    }
+
 
     public void openPage(){
-        Driver.getWebdriver().get(StaffURL);
+        Driver.getWebdriver().get(BaseURL);
+    }
+
+    public void userLogsIn(){
+        openUrl(logInUrl);
     }
 
     public void logOut(){

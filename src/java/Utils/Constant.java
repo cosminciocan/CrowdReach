@@ -8,20 +8,26 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class Constant{
+public class Constant {
 
     //BASE URL
-    public static final String BaseURL = "http://sfvm22/VMS";
-    public static final String StaffURL = "http://sfvm22/VMSStaff";
-//    PATHS
-    public static final String logOutPath = "/Account/LogOff";
+    public static final String BaseURL = "http://localhost:4391";
+    //    PATHS
+    public static final String logOutPath = "";
+    public static final String logInPath = "/#/login";
+    public static final String registerPath = "/#/register";
 
 
     //CREDENTIALS
-    public static final String volunteerUser = "ACVC@actests.rou";
-    public static final String volunteerPassword = "11111111";
+    public static final String volunteerUser = "";
+    public static final String volunteerPassword = "";
+    public String emailValue;
+    public String userNameValue = "cosmin1";
+    public String userPasswordValue = "123456";
+    public String typeOfBusinessDropdown = "businessType";
 
     //VALUES
+    public static final String atTestDomain = "@sfpTest.com";
     public static final String highReservationGroupSize = "200"; // This should be a number above 100
     public static final int defaultTimeOut = 5;
 
@@ -39,36 +45,33 @@ public class Constant{
      */
     // LOCATORS
 
-//    Header
-    @FindBy(css = ".welcomeText .userName.hideMobile")
-    public WebElement expandNameMenu;
+    //    Header
+    @FindBy(className = "toast-message")
+    public WebElement successDiv;
 
-//      Edit Capacity Shift Page
+    //      Edit Capacity Shift Page
     @FindBy(id = "btnAddShift")
     public WebElement addShiftButton;
 
 
-//    Make a reservation page
+    //    Make a reservation page
     @FindBy(id = "btnMakeReservation")
     public WebElement makeReservationButton;
 
 
-//    Manage reservation page
+    //    Manage reservation page
     @FindBy(id = "searchReservations")
     public WebElement manageMakeReservation;
 
 
-
-//    Manage Wait List Page
+    //    Manage Wait List Page
     @FindBy(id = "waitListTable")
     public WebElement waitListTable;
 
 
-//    Contact Us Page
+    //    Contact Us Page
     @FindBy(id = "locationDdl")
     public WebElement selectProcessingCenter;
-
-
 
 
 }

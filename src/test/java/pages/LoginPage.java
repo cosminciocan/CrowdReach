@@ -11,7 +11,7 @@ import static junit.framework.Assert.*;
 public class LoginPage extends TestBase {
 
     // URL
-    public static String logInUrl = baseUrl + loginPath;
+    private  String logInUrl = baseUrl + loginPath;
 
     Driver dv = new Driver();
     // Page Elements
@@ -19,8 +19,6 @@ public class LoginPage extends TestBase {
     public WebElement usernameField;
     @FindBy(id = "loginPassword")
     public WebElement passwordField;
-    @FindBy(className = "btn-block")
-    public WebElement loginButton;
 
 
 
@@ -31,13 +29,14 @@ public class LoginPage extends TestBase {
 
     public void login(String username, String password) {
         waitForElement(usernameField, defaultTimeOut);
-        usernameField.sendKeys(username);
-        passwordField.sendKeys(password);
-        loginButton.click();
+        setText(usernameField, username);
+        setText(passwordField, password);
+        submitButton.click();
+
     }
 
     public void confirmLoggedIn() {
         waitForElement(successDiv, defaultTimeOut);
-        assertTrue(elementContainsText(successDiv, "Login was successful"));
+        assertTrue(elementContainsText(successDiv, loggedInMessage));
     }
 }

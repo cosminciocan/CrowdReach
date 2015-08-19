@@ -18,17 +18,17 @@ public class LoginSteps  extends TestBase {
         loginPage = PageFactory.initElements(Driver.getWebdriver(), LoginPage.class);
     }
 
-    @Given("^The user navigates to the Login page$")
+    @Given("^I navigate to the Login page$")
     public void The_user_navigates_to_the_Login_page() throws Throwable {
         loginPage.openPage();
     }
 
-    @When("^Ted logs in using his email and password$")
+    @When("^I log in using my username and password$")
     public void Ted_logs_in_using_his_email_and_password() throws Throwable {
         loginPage.login(userNameValue,userPasswordValue);
     }
 
-    @Then("^Ted should be logged in$")
+    @Then("I should be logged in")
     public void Ted_should_be_logged_in() throws Throwable {
         loginPage.confirmLoggedIn();
     }

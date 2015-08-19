@@ -1,17 +1,17 @@
 package webdriver;
 
-        import org.junit.Assert;
-        import org.openqa.selenium.WebDriver;
-        import org.openqa.selenium.chrome.ChromeDriver;
-        import org.openqa.selenium.firefox.FirefoxDriver;
-        import org.openqa.selenium.firefox.FirefoxProfile;
-        import org.openqa.selenium.firefox.internal.ProfilesIni;
-        import org.openqa.selenium.ie.InternetExplorerDriver;
-        import java.io.FileInputStream;
-        import java.io.IOException;
-        import java.io.InputStream;
-        import java.util.Properties;
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 
 public class Driver {
@@ -62,20 +62,19 @@ public class Driver {
         });
     }
 
-    public static WebDriver getWebdriver(){
+    public static WebDriver getWebdriver() {
         if (driver == null)
             initWebdriver();
         return driver;
     }
 
-    public static void initConfig(){
+    public static void initConfig() {
         config = new Properties();
         InputStream stream;
 
         try {
             environment = System.getProperty("env").toLowerCase();
-        }
-        catch(NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println("No environment specified in the command line. Using [local] by default.");
             environment = "local";
         }
@@ -83,14 +82,13 @@ public class Driver {
             stream = new FileInputStream("src/main/resources/" + environment + ".properties");
             config.load(stream);
             System.out.println("Using [" + environment + "] environment.");
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             Assert.fail("Invalid << env >> parameter");
             e.printStackTrace();
         }
     }
 
-    public static Properties config(){
+    public static Properties config() {
         if (config == null)
             initConfig();
         return config;

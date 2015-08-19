@@ -16,6 +16,8 @@ public class Constant {
     public static String registerPath = Driver.config().getProperty("registerPath");
     public static String loginPath = Driver.config().getProperty("loginPath");
     public static String logOutPath = Driver.config().getProperty("logOutPath");
+    public static String addContactsPath = Driver.config().getProperty("addContactsPath");
+    public static String importContactsPath = Driver.config().getProperty("importContactsPath");
 
 
     //CREDENTIALS
@@ -26,6 +28,11 @@ public class Constant {
 
     //VALUES
     public static int defaultTimeOut = Integer.parseInt(Driver.config().getProperty("defaultTimeOut"));
+    public static String addedContactMessage = "Successfully added new contact";
+    public static String loggedInMessage = "Login was successful";
+    public static String registeredMessage = "Registration was successful";
+    public static String uploadedMessage = "Your file was uploaded";
+
 //    public static final int defaultTimeOut = 5;
 
 
@@ -41,6 +48,9 @@ public class Constant {
      - nameOfLocator;
      */
     // LOCATORS
+    @FindBy(css = ".btn.btn-default.btn-block")
+    public WebElement submitButton;
+
 
     //    Header
     @FindBy(className = "toast-message")

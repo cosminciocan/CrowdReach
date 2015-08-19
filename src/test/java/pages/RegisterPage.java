@@ -40,7 +40,6 @@ public class RegisterPage extends TestBase {
     public String typeOfBusinessDropdown = "businessType";
 
 
-
     public void openPage() {
         driver.get(registerPage);
     }
@@ -50,21 +49,23 @@ public class RegisterPage extends TestBase {
         emailValue = (generateRandomString(8) + userNameEmailDomain);
         waitForElement(alreadyMemberDiv, defaultTimeOut);
         elementContainsText(alreadyMemberDiv, "Already have an account?");
-        emailField.sendKeys(emailValue);
+        setText(emailField, emailValue);
     }
 
-    public void setUserNameField() {
+    public String setUserNameField() {
         userNameValue = generateRandomAlphaNumeric(8);
-        userNameField.sendKeys(userNameValue);
+        setText(userNameField, userNameValue);
+        return userNameValue;
     }
 
-    public void setPasswordField() {
+    public String setPasswordField() {
         userPasswordValue = generateRandomAlphaNumeric(8);
-        passwordField.sendKeys(userPasswordValue);
+        setText(passwordField, userPasswordValue);
+        return userPasswordValue;
     }
 
     public void setConfirmPasswordField() {
-        confirmPasswordField.sendKeys(userPasswordValue);
+        setText(confirmPasswordField, userPasswordValue);
     }
 
     public void setTypeSelect() {
@@ -79,8 +80,69 @@ public class RegisterPage extends TestBase {
         tryClick(registerButton, defaultTimeOut);
         waitForElement(successDiv, defaultTimeOut);
 //        Sleep(0.5);
-        tryClick(successDiv,defaultTimeOut);
-        assertTrue(elementContainsText(successDiv, "Registration was successful"));
+        tryClick(successDiv, defaultTimeOut);
+        assertTrue(elementContainsText(successDiv, registeredMessage));
+    }
+
+
+    public void checkMandatoryField(int field) {
+        switch (field) {
+            case 0:
+                checkEmailRequired();
+                break;
+            case 1:
+                checkUsernameField();
+                break;
+            case 2:
+                checkPasswordField();
+                break;
+            case 3:
+                checkConfirmPasswordField();
+                break;
+        }
+    }
+
+    public void checkEmailRequired() {
+        setUserNameField();
+        setPasswordField();
+        setConfirmPasswordField();
+        setTypeSelect();
+        tryClick(registerButton, defaultTimeOut);
+        assertFalse(isElementPresent(successDiv));
+        assertTrue(emailField.getAttribute("value").isEmpty());
+        setText(emailField, generateRandomAlphaNumeric(8));
+        tryClick(registerButton, defaultTimeOut);
+        assertFalse(isElementPresent(successDiv));
+    }
+
+    public void checkUsernameField() {
+        setEmailField();
+        setPasswordField();
+        setConfirmPasswordField();
+        setTypeSelect();
+        tryClick(registerButton, defaultTimeOut);
+        assertFalse(isElementPresent(successDiv));
+        assertTrue(userNameField.getAttribute("value").isEmpty());
+    }
+
+    public void checkPasswordField() {
+        setUserNameField();
+        setEmailField();
+        setConfirmPasswordField();
+        setTypeSelect();
+        tryClick(registerButton, defaultTimeOut);
+        assertFalse(isElementPresent(successDiv));
+        assertTrue(passwordField.getAttribute("value").isEmpty());
+    }
+
+    public void checkConfirmPasswordField() {
+        setUserNameField();
+        setEmailField();
+        setPasswordField();
+        setTypeSelect();
+        tryClick(registerButton, defaultTimeOut);
+        assertFalse(isElementPresent(successDiv));
+        assertTrue(confirmPasswordField.getAttribute("value").isEmpty());
     }
 
 

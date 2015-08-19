@@ -4,6 +4,9 @@ import Utils.Constant;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.w3c.dom.DocumentType;
 import webdriver.Driver;
 
@@ -21,7 +24,6 @@ public abstract class TestBase extends Constant {
 
     public static WebDriver driver;
 
-    //    public static JavascriptExecutor js;
     static {
         startSuite();
     }
@@ -170,11 +172,13 @@ public abstract class TestBase extends Constant {
     }
 
     public void tryClick(WebElement element, int timeOutSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, timeOutSeconds);
         boolean found;
         int count = 0; //Count needed for checking the Make Reservation button
         timeOutSeconds = timeOutSeconds * 10;
         do {
             try {
+                wait.until(ExpectedConditions.elementToBeClickable(element));
                 element.click();
                 found = true;
             } catch (Exception e) {
@@ -187,6 +191,8 @@ public abstract class TestBase extends Constant {
             }
             count++;
         } while (!found);
+
+
     }
 
     public void openUrl(String url) {
@@ -200,6 +206,23 @@ public abstract class TestBase extends Constant {
     public int randomWithRange(int min, int max) {
         int range = (max - min);
         return (int) (Math.random() * range) + min;
+    }
+
+    public void setText(WebElement element, String text){
+        waitForElement(element,defaultTimeOut);
+        element.clear();
+        element.sendKeys(text);
+        Assert.assertTrue(element.getAttribute("value").equals(text));
+    }
+
+//    Sets value to a text field. If left empty it sets a random value
+    public void setFieldValue(WebElement element,String ... a){
+        if (a.length == 0){
+            setText(element, generateRandomAlphaNumeric(10));
+        }else{
+            setText(element, a[0]);
+        }
+
     }
 
 ////    Run JS

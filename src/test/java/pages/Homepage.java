@@ -27,9 +27,6 @@ public class Homepage extends TestBase{
         Driver.getWebdriver().get(baseUrl);
     }
 
-    public void userLogsIn(){
-        openUrl(logInUrl);
-    }
 
     public void logOut(){
         Driver.getWebdriver().get(logOutUrl);

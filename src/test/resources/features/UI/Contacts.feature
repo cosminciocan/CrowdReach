@@ -12,6 +12,7 @@ Feature: Testing the adding of contacts
     And I complete all the mandatory fields
     Then I can successfully add the contact
 
+    @CRMVP-14
   Scenario: Ted wants to import a CSV file with contacts
     Given I navigate to the Import From CSV page
     And I upload a file

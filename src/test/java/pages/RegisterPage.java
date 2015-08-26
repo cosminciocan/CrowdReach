@@ -15,9 +15,9 @@ import java.util.Random;
 import static junit.framework.Assert.*;
 
 public class RegisterPage extends TestBase {
-    public String registerPage = baseUrl + registerPath;
 
     // URL
+    public String url = baseUrl + registerPath;
 
     //    Page Elements
     @FindBy(className = "alreadyHaveAccount")
@@ -32,7 +32,7 @@ public class RegisterPage extends TestBase {
     public WebElement confirmPasswordField;
     @FindBy(id = "businessType")
     public List typeSelect;
-    @FindBy(className = "btn-block")
+    @FindBy(css = ".btn-square[title^='Register']")
     public WebElement registerButton;
 
 
@@ -41,7 +41,7 @@ public class RegisterPage extends TestBase {
 
 
     public void openPage() {
-        driver.get(registerPage);
+        driver.get(url);
     }
 
 
@@ -77,15 +77,16 @@ public class RegisterPage extends TestBase {
     }
 
     public void confirmRegistered() {
-        tryClick(registerButton, defaultTimeOut);
+        tryClick(submitButton, defaultTimeOut);
         waitForElement(successDiv, defaultTimeOut);
 //        Sleep(0.5);
-        tryClick(successDiv, defaultTimeOut);
+//        tryClick(successDiv, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, registeredMessage));
     }
 
 
     public void checkMandatoryField(int field) {
+        waitUntilElementNotPresent(successDiv, defaultTimeOut);
         switch (field) {
             case 0:
                 checkEmailRequired();
@@ -107,11 +108,11 @@ public class RegisterPage extends TestBase {
         setPasswordField();
         setConfirmPasswordField();
         setTypeSelect();
-        tryClick(registerButton, defaultTimeOut);
+        tryClick(submitButton, defaultTimeOut);
         assertFalse(isElementPresent(successDiv));
         assertTrue(emailField.getAttribute("value").isEmpty());
         setText(emailField, generateRandomAlphaNumeric(8));
-        tryClick(registerButton, defaultTimeOut);
+        tryClick(submitButton, defaultTimeOut);
         assertFalse(isElementPresent(successDiv));
     }
 
@@ -120,7 +121,7 @@ public class RegisterPage extends TestBase {
         setPasswordField();
         setConfirmPasswordField();
         setTypeSelect();
-        tryClick(registerButton, defaultTimeOut);
+        tryClick(submitButton, defaultTimeOut);
         assertFalse(isElementPresent(successDiv));
         assertTrue(userNameField.getAttribute("value").isEmpty());
     }
@@ -130,7 +131,7 @@ public class RegisterPage extends TestBase {
         setEmailField();
         setConfirmPasswordField();
         setTypeSelect();
-        tryClick(registerButton, defaultTimeOut);
+        tryClick(submitButton, defaultTimeOut);
         assertFalse(isElementPresent(successDiv));
         assertTrue(passwordField.getAttribute("value").isEmpty());
     }
@@ -140,7 +141,7 @@ public class RegisterPage extends TestBase {
         setEmailField();
         setPasswordField();
         setTypeSelect();
-        tryClick(registerButton, defaultTimeOut);
+        tryClick(submitButton, defaultTimeOut);
         assertFalse(isElementPresent(successDiv));
         assertTrue(confirmPasswordField.getAttribute("value").isEmpty());
     }

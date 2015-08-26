@@ -11,7 +11,7 @@ import static junit.framework.Assert.*;
 public class LoginPage extends TestBase {
 
     // URL
-    private  String logInUrl = baseUrl + loginPath;
+    private String logInUrl = baseUrl + loginPath;
 
     Driver dv = new Driver();
     // Page Elements
@@ -21,18 +21,18 @@ public class LoginPage extends TestBase {
     public WebElement passwordField;
 
 
-
     // METHODS
     public void openPage() {
         driver.get(logInUrl);
     }
 
     public void login(String username, String password) {
+        if (isElementPresent(successDiv))
+            waitUntilElementNotPresent(successDiv, defaultTimeOut);
         waitForElement(usernameField, defaultTimeOut);
         setText(usernameField, username);
         setText(passwordField, password);
         submitButton.click();
-
     }
 
     public void confirmLoggedIn() {

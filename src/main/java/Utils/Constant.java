@@ -5,33 +5,45 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import webdriver.Driver;
 
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static webdriver.Driver.config;
 
 
 public class Constant {
 
-//    URL
-    public static String baseUrl = Driver.config().getProperty("rootUrl");
-    public static String registerPath = Driver.config().getProperty("registerPath");
-    public static String loginPath = Driver.config().getProperty("loginPath");
-    public static String logOutPath = Driver.config().getProperty("logOutPath");
-    public static String addContactsPath = Driver.config().getProperty("addContactsPath");
-    public static String importContactsPath = Driver.config().getProperty("importContactsPath");
+    //    URL
+    public static String baseUrl = config().getProperty("rootUrl");
+    public static String registerPath = "/register";
+    public static String loginPath = "/login";
+    public static String logOutPath = "";
+    public static String addContactsPath = "/contacts/enterManually";
+    public static String importContactsPath = "/contacts/csvImport/step1";
+    public static String editProfilePath = "/editProfile";
 
 
     //CREDENTIALS
-    public String userNameValue = Driver.config().getProperty("usernameValue");
-    public String userPasswordValue = Driver.config().getProperty("userPasswordValue");
-    public String emailValue = Driver.config().getProperty("userEmailValue");
-    public String userNameEmailDomain = Driver.config().getProperty("userNameEmailDomain");
+    public String userNameValue = config().getProperty("usernameValue");
+    public String userPasswordValue = config().getProperty("userPasswordValue");
+    public String emailValue = config().getProperty("userEmailValue");
+    public String userNameEmailDomain = config().getProperty("userNameEmailDomain");
 
     //VALUES
-    public static int defaultTimeOut = Integer.parseInt(Driver.config().getProperty("defaultTimeOut"));
+    public static int defaultTimeOut = Integer.parseInt(config().getProperty("defaultTimeOut"));
     public static String addedContactMessage = "Successfully added new contact";
     public static String loggedInMessage = "Login was successful";
     public static String registeredMessage = "Registration was successful";
     public static String uploadedMessage = "Your file was uploaded";
+    public static String editedProfileMessage = "Successfully saved profile changes.";
+
+    //    files
+    public static String pathToCSVFile = config().getProperty("pathToCSVFile").replaceAll("\"","");
+    public static String pathToIMGFile = config().getProperty("pathToIMGFile").replaceAll("\"","");
+    public static String imgFileName = "img.png";
+
+
 
 //    public static final int defaultTimeOut = 5;
 
@@ -48,7 +60,7 @@ public class Constant {
      - nameOfLocator;
      */
     // LOCATORS
-    @FindBy(css = ".btn.btn-default.btn-block")
+    @FindBy(className = "btn-square")
     public WebElement submitButton;
 
 

@@ -67,7 +67,6 @@ public class AddContactsManuallyPage extends TestBase {
     public void manualContactAdded(){
         tryClick(submitButton, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, addedContactMessage));
-
     }
 
 }

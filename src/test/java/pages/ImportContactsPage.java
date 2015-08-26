@@ -36,14 +36,18 @@ public class ImportContactsPage extends TestBase {
 //        }
 //        Assert.assertTrue(file.exists());
 
-        waitUntilElementNotPresent(successDiv,defaultTimeOut);
+        waitUntilElementNotPresent(successDiv, defaultTimeOut);
         waitForElement(importFileButton, defaultTimeOut);
-//        JavascriptExecutor js;
-//        js = (JavascriptExecutor) driver;
-//        js.executeScript("document.getElementsByClassName(\"ng-valid\")[0].setAttribute(\"type\",\"file\");");
+        JavascriptExecutor js;
+        js = (JavascriptExecutor) driver;
+        js.executeScript("document.getElementsByClassName(\"ng-valid\")[0].setAttribute(\"type\",\"file\");");
 //  importFileButton.sendKeys(file.getAbsolutePath());
-        importField.sendKeys("C:\\Automation\\Files\\file.csv");
-        tryClick(importFileButton,defaultTimeOut);
+
+
+
+        System.out.println("Thi is the path: " + pathToCSVFile);
+        importField.sendKeys(pathToCSVFile);
+        tryClick(importFileButton, defaultTimeOut);
 //        Sleep(10);
         tryClick(successDiv, defaultTimeOut);
 //        Sleep(2);

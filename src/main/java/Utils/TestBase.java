@@ -38,47 +38,56 @@ public abstract class TestBase extends Constant {
     }
 
     public void waitForElement(WebElement element, int timeOutSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, timeOutSeconds);
+
 //        WebDriverWait wait = new WebDriverWait(driver, timeOut);
-//        return wait.until(ExpectedConditions.visibilityOf(name));
-        int timeOutLimit = timeOutSeconds * 1000;
-        int timeOutTime = 0;
-        boolean present = false;
-
-        while (!isElementPresent(element)) {
-            try {
-                Thread.sleep(100);
-            } catch (Exception e) {
-                e.printStackTrace();
-
-            }
-            timeOutTime = timeOutTime + 100;
-            if (timeOutTime == timeOutLimit) {
-                System.err.println("Timed out while waiting for the element!");
-                present = true;
-                break;
-            }
-        }
-
-        Assert.assertFalse(present);
+        wait.until(ExpectedConditions.visibilityOf(element));
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+//        int timeOutLimit = timeOutSeconds * 1000;
+//        int timeOutTime = 0;
+//        boolean present = false;
+//
+//        while (!isElementPresent(element)) {
+//            try {
+//                Thread.sleep(100);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//
+//            }
+//            timeOutTime = timeOutTime + 100;
+//            if (timeOutTime == timeOutLimit) {
+//                System.err.println("Timed out while waiting for the element!");
+//                present = true;
+//                break;
+//            }
+//        }
+//
+//        Assert.assertFalse(present);
     }
 
     //  This method returns a boolean value if the element is found/not found
-    public static boolean isElementPresent(WebElement webelement) {
-        boolean exists = false;
+    public static boolean isElementPresent(WebElement element) {
 
-        driver.manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 1);
+
+//        boolean exists = false;
+//
+//        driver.manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS);
 
         try {
-            webelement.getTagName();
-            webelement.isDisplayed();
-            exists = true;
+            wait.until(ExpectedConditions.visibilityOf(element));
+//            element.getTagName();
+//            element.isDisplayed();
+//            exists = true;
 
+            return true;
         } catch (Throwable e) {
+            return false;
             /// Do nothing!
         }
-        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.MILLISECONDS);
-
-        return exists;
+//        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.MILLISECONDS);
+//
+//        return exists;
     }
 
     public String generateRandomString(int length) {
@@ -121,27 +130,55 @@ public abstract class TestBase extends Constant {
         }
     }
 
-    public boolean elementContainsText(WebElement e, String text) {
-        waitForElement(e, defaultTimeOut);
-        if (e.getText().contains(text)) {
-            System.out.println("Text found!");
+    public boolean elementContainsText(WebElement element, String text) {
+        waitForElement(element, defaultTimeOut);
+//        WebDriverWait wait = new WebDriverWait(driver, defaultTimeOut);
+//        waitForElement(element,defaultTimeOut);
+
+
+        try {
+            ExpectedConditions.textToBePresentInElement(element, text);
             return true;
-        } else {
-            try {
-                if (e.getAttribute("value").contains(text)) {
-                    System.out.println("Text found!");
-                    return true;
-                } else {
-                    System.out.println("Text not found!");
-                    return false;
-                }
-            } catch (NullPointerException error) {
-                System.out.println("Text not found!");
-                return false;
-            }
+        } catch (Exception e) {
+            System.err.println(e);
+            return false;
+        }
+
+//        waitForElement(e, defaultTimeOut);
+//        if (e.getText().contains(text)) {
+//            System.out.println("Text found!");
+//            return true;
+//        } else {
+//            try {
+//                if (e.getAttribute("value").contains(text)) {
+//                    System.out.println("Text found!");
+//                    return true;
+//                } else {
+//                    System.out.println("Text not found!");
+//                    return false;
+//                }
+//            } catch (NullPointerException error) {
+//                System.out.println("Text not found!");
+//                return false;
+//            }
+//        }
+    }
+
+    public boolean fieldContainsText(WebElement element, String text) {
+        waitForElement(element, defaultTimeOut);
+//        WebDriverWait wait = new WebDriverWait(driver, defaultTimeOut);
+
+        try {
+            ExpectedConditions.textToBePresentInElementValue(element, text);
+            return true;
+        } catch (Exception er) {
+            System.err.println(er);
+            return false;
         }
     }
 
+
+//TODO: Refactor this !
     public void waitUntilElementNotPresent(WebElement element, int timeOutSeconds) {
         int timeOutTime = 0;
         timeOutSeconds = timeOutSeconds * 1000;
@@ -172,34 +209,30 @@ public abstract class TestBase extends Constant {
     }
 
     public void tryClick(WebElement element, int timeOutSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, timeOutSeconds);
-        boolean found;
-        int count = 0; //Count needed for checking the Make Reservation button
-        timeOutSeconds = timeOutSeconds * 10;
-        do {
-            try {
-                wait.until(ExpectedConditions.elementToBeClickable(element));
-                element.click();
-                found = true;
-            } catch (Exception e) {
-                found = false;
-                Sleep(0.1);
-            }
-            if (count == timeOutSeconds) {
-                Assert.fail("Element not found!");
-                break;
-            }
-            count++;
-        } while (!found);
+//        boolean found;
+//        int count = 0; //Count needed for checking the Make Reservation button
+//        timeOutSeconds = timeOutSeconds * 10;
+//        do {
+//            try {
+////                WebDriverWait wait = new WebDriverWait(driver, timeOutSeconds);
+////                wait.until(ExpectedConditions.elementToBeClickable(element));
+//                element.click();
+//                found = true;
+//            } catch (Exception e) {
+//                found = false;
+//                Sleep(0.1);
+//            }
+//            if (count == timeOutSeconds) {
+//                Assert.fail("Element not found!");
+//                break;
+//            }
+//            count++;
+//        } while (!found);
 
+        waitForElement(element, timeOutSeconds);
+        element.click();
 
-    }
-
-    public void openUrl(String url) {
-        Driver.getWebdriver().get(url);
-        while (isAlertPresent()) {
-            driver.switchTo().alert().accept();
-        }
+//    }
 
     }
 
@@ -208,18 +241,18 @@ public abstract class TestBase extends Constant {
         return (int) (Math.random() * range) + min;
     }
 
-    public void setText(WebElement element, String text){
-        waitForElement(element,defaultTimeOut);
+    public void setText(WebElement element, String text) {
+        waitForElement(element, defaultTimeOut);
         element.clear();
         element.sendKeys(text);
-        Assert.assertTrue(element.getAttribute("value").equals(text));
+        fieldContainsText(element, text);
     }
 
-//    Sets value to a text field. If left empty it sets a random value
-    public void setFieldValue(WebElement element,String ... a){
-        if (a.length == 0){
+    //    Sets value to a text field. If left empty it sets a random value
+    public void setFieldValue(WebElement element, String... a) {
+        if (a.length == 0) {
             setText(element, generateRandomAlphaNumeric(10));
-        }else{
+        } else {
             setText(element, a[0]);
         }
 

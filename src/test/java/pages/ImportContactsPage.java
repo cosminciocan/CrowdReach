@@ -39,13 +39,13 @@ public class ImportContactsPage extends TestBase {
         waitUntilElementNotPresent(successDiv, defaultTimeOut);
         waitForElement(importFileButton, defaultTimeOut);
         JavascriptExecutor js;
-        js = (JavascriptExecutor) driver;
-        js.executeScript("document.getElementsByClassName(\"ng-valid\")[0].setAttribute(\"type\",\"file\");");
+//        js = (JavascriptExecutor) driver;
+//        js.executeScript("document.getElementsByClassName(\"ng-valid\")[0].setAttribute(\"type\",\"file\");");
 //  importFileButton.sendKeys(file.getAbsolutePath());
 
 
 
-        System.out.println("Thi is the path: " + pathToCSVFile);
+//        System.out.println("Thi is the path: " + pathToCSVFile);
         importField.sendKeys(pathToCSVFile);
         tryClick(importFileButton, defaultTimeOut);
 //        Sleep(10);

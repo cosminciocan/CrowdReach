@@ -117,6 +117,7 @@ public class RegisterPage extends TestBase {
     }
 
     public void checkUsernameField() {
+        userNameField.clear();
         setEmailField();
         setPasswordField();
         setConfirmPasswordField();
@@ -127,6 +128,7 @@ public class RegisterPage extends TestBase {
     }
 
     public void checkPasswordField() {
+        passwordField.clear();
         setUserNameField();
         setEmailField();
         setConfirmPasswordField();
@@ -137,6 +139,7 @@ public class RegisterPage extends TestBase {
     }
 
     public void checkConfirmPasswordField() {
+        confirmPasswordField.clear();
         setUserNameField();
         setEmailField();
         setPasswordField();
@@ -145,6 +148,5 @@ public class RegisterPage extends TestBase {
         assertFalse(isElementPresent(successDiv));
         assertTrue(confirmPasswordField.getAttribute("value").isEmpty());
     }
-
 
 }

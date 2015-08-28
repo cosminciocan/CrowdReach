@@ -15,7 +15,7 @@ public class FeaturesTest {
     /**
      *
      *   For running the tests from the command line, use the command:
-     *   mvn clean test -q -Dcucumber.options="--tags @ready" -Dbrowser=chrome -Denv=local
+     *   mvn clean test -q -Dcucumber.options="--tags @ready" -Dbrowser=chrome -Denv=stage
      *   use space and --PARAM after @TAGS to introduce new parameters
      *   To print out all the available configuration options, simply pass the --help option.
      *   Example:

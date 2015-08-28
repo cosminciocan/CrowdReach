@@ -37,5 +37,9 @@ public class EditUserProfilePage extends TestBase {
         return newPassword;
     }
 
+    public void doSomething(){
+
+    }
+
 
 }

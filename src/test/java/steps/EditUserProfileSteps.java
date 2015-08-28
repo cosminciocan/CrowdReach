@@ -2,6 +2,7 @@ package steps;
 
 import Utils.TestBase;
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -49,4 +50,8 @@ public class EditUserProfileSteps extends TestBase {
         editUserProfilePage.changePassword(newPassword, userPasswordValue);
     }
 
+    @And("^I do something$")
+    public void I_do_something() throws Throwable {
+
+    }
 }

@@ -12,9 +12,7 @@ Feature: Edit User Profile
     Given I navigate to the Edit User Profile page
     When I input the old password and set a new password
     Then I should be able to login using that password
-
-  @After("@CRMVP-10")
-  Scenario: Undo password change
-    Given I navigate to the Edit User Profile page
+    And I navigate to the Edit User Profile page
     Then I set the default password for the test account
     Then I should be able to login using that password
+

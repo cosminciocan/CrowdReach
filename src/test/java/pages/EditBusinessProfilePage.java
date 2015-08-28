@@ -8,9 +8,9 @@ import org.openqa.selenium.support.FindBy;
 
 import static junit.framework.Assert.*;
 
-public class EditProfilePage extends TestBase {
+public class EditBusinessProfilePage extends TestBase {
 
-    public String url = baseUrl + editProfilePath;
+    public String url = baseUrl + editBusinessProfilePath;
 
 
     @FindBy(id = "profileName")
@@ -19,8 +19,7 @@ public class EditProfilePage extends TestBase {
     public WebElement addressField;
     @FindBy(id = "profilePhone")
     public WebElement phoneField;
-    @FindBy(className = "btn-default")
-    public WebElement saveChangesButton;
+
     @FindBy(className = "ng-isolate-scope")
     public WebElement uploadField;
 

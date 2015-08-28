@@ -21,7 +21,9 @@ public class Constant {
     public static String logOutPath = "";
     public static String addContactsPath = "/contacts/enterManually";
     public static String importContactsPath = "/contacts/csvImport/step1";
-    public static String editProfilePath = "/editProfile";
+    public static String editBusinessProfilePath = "/editProfile";
+    public static String editUserProfilePath = "/editUserInfo";
+
 
 
     //CREDENTIALS
@@ -37,6 +39,7 @@ public class Constant {
     public static String registeredMessage = "Registration was successful";
     public static String uploadedMessage = "Your file was uploaded";
     public static String editedProfileMessage = "Successfully saved profile changes.";
+    public static String passwordChangedMessage = "";
 
     //    files
     public static String pathToCSVFile = config().getProperty("pathToCSVFile").replaceAll("\"","");
@@ -63,10 +66,20 @@ public class Constant {
     @FindBy(className = "btn-square")
     public WebElement submitButton;
 
+    @FindBy(className = "btn-default")
+    public WebElement saveChangesButton;
+
+    @FindBy(className = "toast-error")
+    public WebElement errorDiv;
+
+
+
 
     //    Header
     @FindBy(className = "toast-message")
     public WebElement successDiv;
+
+
 
     //      Edit Capacity Shift Page
     @FindBy(id = "btnAddShift")

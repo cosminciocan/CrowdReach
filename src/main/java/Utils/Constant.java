@@ -36,13 +36,16 @@ public class Constant {
 
     //VALUES
     public static int defaultTimeOut = Integer.parseInt(config().getProperty("defaultTimeOut"));
+    public static List tableValues = Arrays.asList("TestName1", "TestName2", "TestName3", "TestName4");
+
+    //    Messages
     public static String addedContactMessage = "Successfully added new contact";
     public static String loggedInMessage = "Login was successful";
     public static String registeredMessage = "Registration was successful";
     public static String uploadedMessage = "Your file was uploaded";
     public static String editedProfileMessage = "Successfully saved profile changes.";
     public static String passwordChangedMessage = "";
-    public static List tableValues = Arrays.asList("TestName1","TestName2","TestName3","TestName4");
+    public static String incorrectLoginDetailsMessage = "Username or password is incorrect. Please try again.";
 
     //    files
     public static String pathToCSVFile = config().getProperty("pathToCSVFile").replaceAll("\"", "");

@@ -9,7 +9,7 @@ import static junit.framework.Assert.assertTrue;
 
 public class AddContactsManuallyPage extends TestBase {
 
-//url
+    //url
     public String url = baseUrl + addContactsPath;
 
 
@@ -43,12 +43,12 @@ public class AddContactsManuallyPage extends TestBase {
     public WebElement zipField;
 
 
-//    Methods
-    public void openPage(){
+    //    Methods
+    public void openPage() {
         driver.get(url);
     }
 
-    public void completeFields(){
+    public void completeFields() {
         setFieldValue(firstNameField);
         setFieldValue(lastNameField);
         setFieldValue(emailField, generateRandomAlphaNumeric(8) + userNameEmailDomain);
@@ -64,9 +64,25 @@ public class AddContactsManuallyPage extends TestBase {
         setFieldValue(zipField, generateRandomNumber(5));
     }
 
-    public void manualContactAdded(){
+    public void manualContactAdded() {
         tryClick(submitButton, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, addedContactMessage));
     }
 
+    public void checkMandatoryFields() {
+        waitForElement(firstNameField, defaultTimeOut);
+        assertTrue(isAttribtuePresent(firstNameField, "required"));
+        assertTrue(isAttribtuePresent(lastNameField, "required"));
+        assertTrue(isAttribtuePresent(phoneField, "required"));
+        assertTrue(isAttribtuePresent(twitterField, "required"));
+        assertTrue(isAttribtuePresent(emailField, "required"));
+        assertTrue(isAttribtuePresent(facebookField, "required"));
+        assertTrue(isAttribtuePresent(address2Field, "required"));
+        assertTrue(isAttribtuePresent(countryField, "required"));
+        assertTrue(isAttribtuePresent(notesArea, "required"));
+        assertTrue(isAttribtuePresent(address1Field, "required"));
+        assertTrue(isAttribtuePresent(cityField, "required"));
+        assertTrue(isAttribtuePresent(stateField, "required"));
+        assertTrue(isAttribtuePresent(zipField, "required"));
+    }
 }

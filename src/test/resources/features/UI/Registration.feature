@@ -4,7 +4,7 @@ Feature: Testing the Registration functionality
   Background: Navigating to the web application
     Given I navigate to the Register page
 
-  @CRMVP-5 @CRMVP-6 @CRMVP-7 @CRMVP-9
+  @CRMVP-5 @CRMVP-6 @CRMVP-7 @CRMVP-9 @sanity
   Scenario: Ted wants to register
     Given Ted wants to enter his email address
     And Ted enters a username
@@ -14,6 +14,7 @@ Feature: Testing the Registration functionality
     And Ted should be able to log in
     Then I should be logged in
 
+  @negative
   Scenario: Checking the mandatory fields
     Given I want to register
     When I forget to complete a required field

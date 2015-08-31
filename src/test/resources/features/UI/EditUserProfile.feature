@@ -6,7 +6,7 @@ Feature: Edit User Profile
     And I log in using my username and password
     Then I should be logged in
 
-  @CRMVP-10 @regression
+  @CRMVP-10 @sanity
   Scenario: Ted wants to change his password
     Given I navigate to the Edit User Profile page
     When I input the old password and set a new password

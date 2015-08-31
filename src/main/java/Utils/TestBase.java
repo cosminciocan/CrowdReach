@@ -259,6 +259,18 @@ public abstract class TestBase extends Constant {
 
     }
 
+    public boolean isAttribtuePresent(WebElement element, String attribute) {
+        Boolean result = false;
+        try {
+            String value = element.getAttribute(attribute);
+            if (value != null){
+                result = true;
+            }
+        } catch (Exception e) {}
+//  Do nothing
+        return result;
+    }
+
 ////    Run JS
 //      JavascriptExecutor js;
 //    js = (JavascriptExecutor)driver;

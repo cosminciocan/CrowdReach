@@ -1,6 +1,8 @@
 package pages;
 
 import Utils.TestBase;
+import org.junit.Assert;
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import webdriver.Driver;
@@ -30,6 +32,7 @@ public class LoginPage extends TestBase {
         if (isElementPresent(successDiv))
             waitUntilElementNotPresent(successDiv, defaultTimeOut);
         waitForElement(usernameField, defaultTimeOut);
+        assertTrue(isAttribtuePresent(usernameField, "required"));
         setText(usernameField, username);
         setText(passwordField, password);
         submitButton.click();
@@ -38,5 +41,16 @@ public class LoginPage extends TestBase {
     public void confirmLoggedIn() {
         waitForElement(successDiv, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, loggedInMessage));
+    }
+
+    public void checkLoggedInRequired() {
+        waitForElement(usernameField, defaultTimeOut);
+        waitForElement(passwordField, defaultTimeOut);
+        waitForElement(submitButton, defaultTimeOut);
+    }
+
+    public void confirmNotLoggedIn(){
+        waitForElement(errorDiv, defaultTimeOut);
+        assertTrue(elementContainsText(errorDiv, incorrectLoginDetailsMessage));
     }
 }

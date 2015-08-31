@@ -40,29 +40,30 @@ public abstract class TestBase extends Constant {
     public void waitForElement(WebElement element, int timeOutSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, timeOutSeconds);
 
-//        WebDriverWait wait = new WebDriverWait(driver, timeOut);
-        wait.until(ExpectedConditions.visibilityOf(element));
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-//        int timeOutLimit = timeOutSeconds * 1000;
-//        int timeOutTime = 0;
-//        boolean present = false;
+//           wait.until(ExpectedConditions.visibilityOf(element));
+//           wait.until(ExpectedConditions.elementToBeClickable(element));
 //
-//        while (!isElementPresent(element)) {
-//            try {
-//                Thread.sleep(100);
-//            } catch (Exception e) {
-//                e.printStackTrace();
+//       }
+        int timeOutLimit = timeOutSeconds * 1000;
+        int timeOutTime = 0;
+        boolean present = false;
 //
-//            }
-//            timeOutTime = timeOutTime + 100;
-//            if (timeOutTime == timeOutLimit) {
-//                System.err.println("Timed out while waiting for the element!");
-//                present = true;
-//                break;
-//            }
-//        }
+        while (!isElementPresent(element)) {
+            try {
+                Thread.sleep(100);
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+            timeOutTime = timeOutTime + 100;
+            if (timeOutTime == timeOutLimit) {
+                System.err.println("Timed out while waiting for the element!");
+                present = true;
+                break;
+            }
+        }
 //
-//        Assert.assertFalse(present);
+        Assert.assertFalse(present);
     }
 
     //  This method returns a boolean value if the element is found/not found

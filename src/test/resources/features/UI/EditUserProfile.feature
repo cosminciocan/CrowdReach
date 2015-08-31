@@ -1,4 +1,4 @@
-  Feature: Edit User Profile
+Feature: Edit User Profile
   Testing the user profile changes
 
   Background: Login

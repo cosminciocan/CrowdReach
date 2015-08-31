@@ -7,7 +7,10 @@ import webdriver.Driver;
 
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import static webdriver.Driver.config;
 
@@ -25,7 +28,6 @@ public class Constant {
     public static String editUserProfilePath = "/editUserInfo";
 
 
-
     //CREDENTIALS
     public String userNameValue = config().getProperty("usernameValue");
     public String userPasswordValue = config().getProperty("userPasswordValue");
@@ -40,12 +42,12 @@ public class Constant {
     public static String uploadedMessage = "Your file was uploaded";
     public static String editedProfileMessage = "Successfully saved profile changes.";
     public static String passwordChangedMessage = "";
+    public static List tableValues = Arrays.asList("TestName1","TestName2","TestName3","TestName4");
 
     //    files
-    public static String pathToCSVFile = config().getProperty("pathToCSVFile").replaceAll("\"","");
-    public static String pathToIMGFile = config().getProperty("pathToIMGFile").replaceAll("\"","");
+    public static String pathToCSVFile = config().getProperty("pathToCSVFile").replaceAll("\"", "");
+    public static String pathToIMGFile = config().getProperty("pathToIMGFile").replaceAll("\"", "");
     public static String imgFileName = "img.png";
-
 
 
 //    public static final int defaultTimeOut = 5;
@@ -73,12 +75,9 @@ public class Constant {
     public WebElement errorDiv;
 
 
-
-
     //    Header
     @FindBy(className = "toast-message")
     public WebElement successDiv;
-
 
 
     //      Edit Capacity Shift Page

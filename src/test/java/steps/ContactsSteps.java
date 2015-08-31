@@ -48,4 +48,16 @@ public class ContactsSteps extends TestBase {
     public void I_upload_a_file() throws Throwable {
         importContactsPage.uploadFile();
     }
+
+    @Then("^I can map the fields in the file$")
+    public void I_can_map_the_fields_in_the_file() throws Throwable {
+        importContactsPage.mapImportedFile();
+    }
+
+    @And("^I can see the values being mapped$")
+    public void I_can_see_the_values_being_mapped() throws Throwable {
+        importContactsPage.checkImportedValues();
+    }
+
+
 }

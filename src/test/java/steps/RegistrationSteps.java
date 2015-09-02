@@ -83,4 +83,9 @@ public class RegistrationSteps extends TestBase {
         }
     }
 
+    @Then("^the max length validations should be as expected$")
+    public void the_validations_should_be_as_expected() throws Throwable {
+        registerPage.checkFieldMaxLengthValidations();
+    }
+
 }

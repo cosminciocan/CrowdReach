@@ -40,6 +40,7 @@ public class EditBusinessProfilePage extends TestBase {
         setText(addressField, editAddress);
         phoneField.sendKeys(editPhone);
         uploadField.sendKeys(pathToIMGFile);
+        waitUntilElementNotPresent(successDiv, defaultTimeOut);
         tryClick(saveChangesButton, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, editedProfileMessage));
         assertTrue(uploadField.getAttribute("value").contains(imgFileName));
@@ -48,8 +49,17 @@ public class EditBusinessProfilePage extends TestBase {
 
     public void checkEditedChanges() {
         openPage();
-        assertTrue(fieldContainsText(nameField, editName));
-        assertTrue(fieldContainsText(addressField, editAddress));
+        assertTrue(elementContainsText(nameField, editName));
+        assertTrue(elementContainsText(addressField, editAddress));
 //        assertTrue(elementContainsText(phoneField, editPhone));
+    }
+
+    public void checFieldsFormat() {
+        waitForElement(nameField, defaultTimeOut);
+        assertTrue(isAttribtuePresent(nameField, "required"));
+        assertFalse(isAttribtuePresent(addressField, "required"));
+        assertFalse(isAttribtuePresent(phoneField, "required"));
+        assertTrue(phoneField.getAttribute("type").equals("tel"));
+        assertTrue(uploadField.getAttribute("type").equals("file"));
     }
 }

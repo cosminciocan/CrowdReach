@@ -18,14 +18,15 @@ import static webdriver.Driver.config;
 public class Constant {
 
     //    URL
-    public static String baseUrl = config().getProperty("rootUrl");
-    public static String registerPath = "/register";
-    public static String loginPath = "/login";
-    public static String logOutPath = "";
-    public static String addContactsPath = "/contacts/enterManually";
-    public static String importContactsPath = "/contacts/csvImport/step1";
-    public static String editBusinessProfilePath = "/editProfile";
-    public static String editUserProfilePath = "/editUserInfo";
+    public final static String baseUrl = config().getProperty("rootUrl");
+    public final static String registerPath = "/register";
+    public final static String loginPath = "/login";
+    public final static String logOutPath = "";
+    public final static String addContactsPath = "/contacts/enterManually";
+    public final static String importContactsPath = "/contacts/csvImport/step1";
+    public final static String editBusinessProfilePath = "/editProfile";
+    public final static String editUserProfilePath = "/editUserInfo";
+    public final static String communicationPath = "/communications";
 
 
     //CREDENTIALS
@@ -37,6 +38,9 @@ public class Constant {
     //VALUES
     public static int defaultTimeOut = Integer.parseInt(config().getProperty("defaultTimeOut"));
     public static List tableValues = Arrays.asList("TestName1", "TestName2", "TestName3", "TestName4");
+    public static int textFieldDefaultLenght = 50;
+    public static int textAreaDefaultLenght = 255;
+
 
     //    Messages
     public static String addedContactMessage = "Successfully added new contact";
@@ -46,6 +50,12 @@ public class Constant {
     public static String editedProfileMessage = "Successfully saved profile changes.";
     public static String passwordChangedMessage = "";
     public static String incorrectLoginDetailsMessage = "Username or password is incorrect. Please try again.";
+    public static String pleaseUploadCSVMessage = "Please upload a csv file";
+    public static String wrongFileUploadedMessage = "";
+    public static String shortNewPasswordMessage = "New password should be at least 8 characters long.";
+    public static String incorrectOldPasswordMessage = "There was an error on the server";
+    public static String newAndConfirmPasswordMessage = "New and Confirm Password does not match.";
+
 
     //    files
     public static String pathToCSVFile = config().getProperty("pathToCSVFile").replaceAll("\"", "");

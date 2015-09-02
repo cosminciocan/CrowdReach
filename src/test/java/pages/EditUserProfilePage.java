@@ -22,24 +22,43 @@ public class EditUserProfilePage extends TestBase {
     public WebElement confirmPasswordField;
 
 
-
     public void openPage() {
         driver.get(url);
     }
 
-    public String changePassword(String oldPassword, String newPassword) {
+    //    TODO: Remove the assertion from the method,and then the old and new test
+    public String changePassword(String oldPassword, String newPassword, String confirmPassword) {
         setText(oldPasswordField, oldPassword);
         setText(onewPasswordField, newPassword);
-        setText(confirmPasswordField, newPassword);
+        setText(confirmPasswordField, confirmPassword);
         tryClick(saveChangesButton, defaultTimeOut);
-        assertFalse(isElementPresent(errorDiv));
-        assertTrue(elementContainsText(successDiv, passwordChangedMessage));
         return newPassword;
     }
 
-    public void doSomething(){
-
+    public void checkPasswordChanged() {
+        assertTrue(elementContainsText(successDiv, passwordChangedMessage));
+        assertFalse(isElementPresent(errorDiv));
     }
 
+    public void checkFieldMaxValidations() {
+        String maxLength = "" + textFieldDefaultLenght;
+        assertTrue(isAttribtuePresent(oldPasswordField, "required"));
+        assertTrue(isAttribtuePresent(onewPasswordField, "required"));
+        assertTrue(isAttribtuePresent(confirmPasswordField, "required"));
+        assertTrue(oldPasswordField.getAttribute("maxlength").equals(maxLength));
+        assertTrue(onewPasswordField.getAttribute("maxlength").equals(maxLength));
+        assertTrue(confirmPasswordField.getAttribute("maxlength").equals(maxLength));
+    }
 
+    public void checkIncorrectOldPwdMessage() {
+        assertTrue(elementContainsText(errorDiv, incorrectOldPasswordMessage));
+    }
+
+    public void checkPwdToShortMessage() {
+        assertTrue(elementContainsText(errorDiv, shortNewPasswordMessage));
+    }
+
+    public void checkConfirmPwdNotMatchMessage(){
+        assertTrue(elementContainsText(errorDiv, newAndConfirmPasswordMessage));
+    }
 }

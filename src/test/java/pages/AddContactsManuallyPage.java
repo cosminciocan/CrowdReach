@@ -74,8 +74,10 @@ public class AddContactsManuallyPage extends TestBase {
         assertTrue(isAttribtuePresent(firstNameField, "required"));
         assertTrue(isAttribtuePresent(lastNameField, "required"));
         assertTrue(isAttribtuePresent(phoneField, "required"));
+        assertTrue(phoneField.getAttribute("type").equals("tel"));
         assertTrue(isAttribtuePresent(twitterField, "required"));
         assertTrue(isAttribtuePresent(emailField, "required"));
+        assertTrue(emailField.getAttribute("type").equals("email"));
         assertTrue(isAttribtuePresent(facebookField, "required"));
         assertTrue(isAttribtuePresent(address2Field, "required"));
         assertTrue(isAttribtuePresent(countryField, "required"));

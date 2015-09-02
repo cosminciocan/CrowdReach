@@ -7,6 +7,7 @@ Feature: Login feature
     When I log in using my username and password
     Then I should be logged in
 
+#    Not ready since there is no log out method
   Scenario: Access diferent pages will redirect to the log in page
     Given I navigate to the Add Contacts Manually page
     Then I should see the login page

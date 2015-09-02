@@ -35,7 +35,9 @@ public class EditUserProfileSteps extends TestBase {
     @When("^I input the old password and set a new password$")
     public void I_input_the_old_password_and_set_a_new_password() throws Throwable {
         newPassword = generateRandomAlphaNumeric(8);
-        password = editUserProfilePage.changePassword(userPasswordValue, newPassword);
+        password = editUserProfilePage.changePassword(userPasswordValue, newPassword, newPassword);
+        editUserProfilePage.checkPasswordChanged();
+
     }
 
     @Then("^I should be able to login using that password$")
@@ -47,11 +49,47 @@ public class EditUserProfileSteps extends TestBase {
 
     @Then("^I set the default password for the test account$")
     public void I_set_the_default_password_for_the_test_account() throws Throwable {
-        editUserProfilePage.changePassword(newPassword, userPasswordValue);
+        editUserProfilePage.changePassword(newPassword, userPasswordValue, userPasswordValue);
+        editUserProfilePage.checkPasswordChanged();
     }
 
-    @And("^I do something$")
-    public void I_do_something() throws Throwable {
 
+    @When("^I check the field max length validations$")
+    public void I_check_the_field_validations() throws Throwable {
+        editUserProfilePage.checkFieldMaxValidations();
+    }
+
+    @When("^I enter an incorrect old password$")
+    public void I_enter_an_incorrect_old_password() throws Throwable {
+        newPassword = generateRandomAlphaNumeric(8);
+        editUserProfilePage.changePassword(newPassword, newPassword, newPassword);
+    }
+
+    @When("^I enter a new password of (\\d+) characters$")
+    public void I_enter_a_password_shorter_than_characters(int arg1) throws Throwable {
+        newPassword = generateRandomAlphaNumeric(arg1);
+        editUserProfilePage.changePassword(userPasswordValue, newPassword, newPassword);
+
+    }
+
+    @Then("^I should see an error message regarding the old password$")
+    public void I_should_see_an_error_message_regarding_the_old_password() throws Throwable {
+        editUserProfilePage.checkIncorrectOldPwdMessage();
+    }
+
+    @When("^I type the confirm password different from the new one$")
+    public void I_type_the_confirm_password_different_from_the_new_one() throws Throwable {
+        newPassword = generateRandomAlphaNumeric(8);
+        editUserProfilePage.changePassword(userPasswordValue, newPassword, generateRandomAlphaNumeric(8));
+    }
+
+    @Then("^I should see an error message regarding the password being to short$")
+    public void I_should_see_an_error_message_regarding_the_password_being_to_short() throws Throwable {
+        editUserProfilePage.checkPwdToShortMessage();
+    }
+
+    @Then("^I shouls see an error message regarding the confirm password$")
+    public void I_shouls_see_an_error_message_regarding_the_confirm_password() throws Throwable {
+        editUserProfilePage.checkConfirmPwdNotMatchMessage();
     }
 }

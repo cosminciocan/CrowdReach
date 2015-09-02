@@ -4,6 +4,7 @@ import Utils.TestBase;
 import com.sun.imageio.plugins.wbmp.WBMPImageReader;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -147,6 +148,37 @@ public class RegisterPage extends TestBase {
         tryClick(submitButton, defaultTimeOut);
         assertFalse(isElementPresent(successDiv));
         assertTrue(confirmPasswordField.getAttribute("value").isEmpty());
+    }
+
+    public void checkFieldMaxLengthValidations() {
+        waitForElement(emailField, defaultTimeOut);
+//        Debug Purposes
+//        js = (JavascriptExecutor) driver;
+//        js.executeScript("document.getElementById(\"registerEmail\").setAttribute(\"maxlength\" , \"50\")");
+//        js.executeScript("document.getElementById(\"registerUsername\").setAttribute(\"maxlength\" , \"50\")");
+//        js.executeScript("document.getElementById(\"registerPassword\").setAttribute(\"maxlength\" , \"50\")");
+//        js.executeScript("document.getElementById(\"registerConfirmPassword\").setAttribute(\"maxlength\" , \"50\")");
+
+        String maxLength = "" + textFieldDefaultLenght;
+        assertTrue(userNameField.getAttribute("maxlength").equals(maxLength));
+        assertTrue(emailField.getAttribute("maxlength").equals(maxLength));
+        assertTrue(passwordField.getAttribute("maxlength").equals(maxLength));
+        assertTrue(confirmPasswordField.getAttribute("maxlength").equals(maxLength));
+        setText(emailField, generateRandomAlphaNumeric(textFieldDefaultLenght + 1));
+        setText(userNameField, generateRandomAlphaNumeric(textFieldDefaultLenght + 1));
+        setText(passwordField, generateRandomAlphaNumeric(textFieldDefaultLenght + 1));
+        setText(confirmPasswordField, generateRandomAlphaNumeric(textFieldDefaultLenght + 1));
+        assertTrue(emailField.getAttribute("value").length() == textFieldDefaultLenght);
+        assertTrue(userNameField.getAttribute("value").length() == textFieldDefaultLenght);
+        assertTrue(passwordField.getAttribute("value").length() == textFieldDefaultLenght);
+        assertTrue(confirmPasswordField.getAttribute("value").length() == textFieldDefaultLenght);
+    }
+
+    public void checkFieldMinLenghtValidations() {
+        setText(emailField, generateRandomAlphaNumeric(1));
+        setText(userNameField, generateRandomAlphaNumeric(1));
+        setText(passwordField, generateRandomAlphaNumeric(1));
+        setText(confirmPasswordField, generateRandomAlphaNumeric(1));
     }
 
 }

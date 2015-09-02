@@ -1,6 +1,7 @@
 package steps;
 
 import Utils.TestBase;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -29,6 +30,11 @@ public class EditBusinessProfileSteps extends TestBase{
     @Then("^the changes should be saved$")
     public void the_changes_should_be_saved() throws Throwable {
         editBusinessProfilePage.checkEditedChanges();
+    }
+
+    @And("^I check the fields format and the mandatory fields$")
+    public void I_check_the_fields_format_and_the_mandatory_fields() throws Throwable {
+        editBusinessProfilePage.checFieldsFormat();
     }
 
 }

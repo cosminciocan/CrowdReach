@@ -14,8 +14,11 @@ Feature: Testing the Registration functionality
     And Ted should be able to log in
     Then I should be logged in
 
-  @negative
   Scenario: Checking the mandatory fields
     Given I want to register
     When I forget to complete a required field
     Then I should not be allowed to continue
+
+  @CRMVP-6
+  Scenario: Check the field lenght validations
+    Then the max length validations should be as expected

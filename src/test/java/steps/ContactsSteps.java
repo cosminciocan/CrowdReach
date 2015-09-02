@@ -66,4 +66,24 @@ public class ContactsSteps extends TestBase {
     }
 
 
+    @And("^I try to proceed to the next step without uploading a file$")
+    public void I_try_to_proceed_to_the_next_step_without_uploading_a_file() throws Throwable {
+        importContactsPage.nextStepWithoutCsvUpload();
+    }
+
+    @Then("^I should see an error and remain on the same page$")
+    public void I_should_see_an_error_and_remain_on_the_same_page() throws Throwable {
+        importContactsPage.checkNoFileUploadMessage();
+    }
+
+
+    @And("^I try to upload a file type different than CSV$")
+    public void I_try_to_upload_a_file_type_different_than_CSV() throws Throwable {
+        importContactsPage.uploadWrongFileFormat();
+    }
+
+    @Then("^the file should not be uploaded$")
+    public void the_file_should_not_be_uploaded() throws Throwable {
+        importContactsPage.checkWrongFileNotUploaded();
+    }
 }

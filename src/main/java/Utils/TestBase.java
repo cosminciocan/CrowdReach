@@ -23,6 +23,8 @@ import java.util.concurrent.TimeUnit;
 public abstract class TestBase extends Constant {
 
     public static WebDriver driver;
+    public JavascriptExecutor js;
+
 
     static {
         startSuite();
@@ -44,19 +46,18 @@ public abstract class TestBase extends Constant {
 //           wait.until(ExpectedConditions.elementToBeClickable(element));
 //
 //       }
-        int timeOutLimit = timeOutSeconds * 1000;
         int timeOutTime = 0;
         boolean present = false;
 //
         while (!isElementPresent(element)) {
             try {
-                Thread.sleep(100);
+                Thread.sleep(10);
             } catch (Exception e) {
                 e.printStackTrace();
 
             }
-            timeOutTime = timeOutTime + 100;
-            if (timeOutTime == timeOutLimit) {
+            timeOutTime++;
+            if (timeOutTime == timeOutSeconds) {
                 System.err.println("Timed out while waiting for the element!");
                 present = true;
                 break;
@@ -132,54 +133,50 @@ public abstract class TestBase extends Constant {
     }
 
     public boolean elementContainsText(WebElement element, String text) {
-        waitForElement(element, defaultTimeOut);
+//        waitForElement(element, defaultTimeOut);
 //        WebDriverWait wait = new WebDriverWait(driver, defaultTimeOut);
 //        waitForElement(element,defaultTimeOut);
 
 
-        try {
-            ExpectedConditions.textToBePresentInElement(element, text);
-            return true;
-        } catch (Exception e) {
-            System.err.println(e);
-            return false;
-        }
-
-//        waitForElement(e, defaultTimeOut);
-//        if (e.getText().contains(text)) {
-//            System.out.println("Text found!");
+//        try {
+//            ExpectedConditions.textToBePresentInElement(element, text);
 //            return true;
-//        } else {
-//            try {
-//                if (e.getAttribute("value").contains(text)) {
-//                    System.out.println("Text found!");
-//                    return true;
-//                } else {
-//                    System.out.println("Text not found!");
-//                    return false;
-//                }
-//            } catch (NullPointerException error) {
-//                System.out.println("Text not found!");
-//                return false;
-//            }
+//        } catch (Exception e) {
+//            System.err.println(e);
+//            return false;
 //        }
-    }
 
-    public boolean fieldContainsText(WebElement element, String text) {
         waitForElement(element, defaultTimeOut);
-//        WebDriverWait wait = new WebDriverWait(driver, defaultTimeOut);
-
-        try {
-            ExpectedConditions.textToBePresentInElementValue(element, text);
+        if (element.getText().contains(text)) {
             return true;
-        } catch (Exception er) {
-            System.err.println(er);
-            return false;
+        } else {
+            try {
+                if (element.getAttribute("value").contains(text)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (NullPointerException error) {
+                return false;
+            }
         }
     }
 
+//    public boolean fieldContainsText(WebElement element, String text) {
+//        waitForElement(element, defaultTimeOut);
+////        WebDriverWait wait = new WebDriverWait(driver, defaultTimeOut);
+//
+//        try {
+//            ExpectedConditions.textToBePresentInElementValue(element, text);
+//            return true;
+//        } catch (Exception er) {
+//            System.err.println(er);
+//            return false;
+//        }
+//    }
 
-//TODO: Refactor this !
+
+    //TODO: Refactor this !
     public void waitUntilElementNotPresent(WebElement element, int timeOutSeconds) {
         int timeOutTime = 0;
         timeOutSeconds = timeOutSeconds * 1000;
@@ -246,7 +243,7 @@ public abstract class TestBase extends Constant {
         waitForElement(element, defaultTimeOut);
         element.clear();
         element.sendKeys(text);
-        fieldContainsText(element, text);
+        elementContainsText(element, text);
     }
 
     //    Sets value to a text field. If left empty it sets a random value
@@ -263,10 +260,11 @@ public abstract class TestBase extends Constant {
         Boolean result = false;
         try {
             String value = element.getAttribute(attribute);
-            if (value != null){
+            if (value != null) {
                 result = true;
             }
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
 //  Do nothing
         return result;
     }

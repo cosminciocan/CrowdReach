@@ -11,6 +11,8 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import static org.junit.Assert.*;
+
 
 public class ImportContactsPage extends TestBase {
 
@@ -44,11 +46,11 @@ public class ImportContactsPage extends TestBase {
         waitUntilElementNotPresent(successDiv, defaultTimeOut);
         waitForElement(importFileButton, defaultTimeOut);
         waitForElement(importField, defaultTimeOut);
-        Assert.assertTrue(importField.getAttribute("type").equals("file"));
+        assertTrue(importField.getAttribute("type").equals("file"));
         importField.sendKeys(pathToCSVFile);
         tryClick(importFileButton, defaultTimeOut);
         tryClick(successDiv, defaultTimeOut);
-        Assert.assertTrue(elementContainsText(successDiv, uploadedMessage));
+        assertTrue(elementContainsText(successDiv, uploadedMessage));
     }
 
     public void mapImportedFile() {
@@ -56,7 +58,7 @@ public class ImportContactsPage extends TestBase {
         for (int i = 0; i < fileFields.size() - 1; i++) {
             String mapNameValue = listOfMapFields.get(i).getText();
             (new Actions(driver)).dragAndDrop(listOfMapFields.get(i), fileFields.get(i)).perform();
-            Assert.assertTrue(elementContainsText(fileFields.get(i), mapNameValue));
+            assertTrue(elementContainsText(fileFields.get(i), mapNameValue));
         }
         tryClick(nextStepLink, defaultTimeOut);
         waitForElement(importedValuesTable, defaultTimeOut);
@@ -64,7 +66,33 @@ public class ImportContactsPage extends TestBase {
 
     public void checkImportedValues() {
         for (int i = 0; i < tableRowValues.size(); i++) {
-            Assert.assertTrue(tableRowValues.get(i).getText().equals(tableValues.get(i)));
+            assertTrue(tableRowValues.get(i).getText().equals(tableValues.get(i)));
         }
     }
+
+    public void nextStepWithoutCsvUpload() {
+        waitUntilElementNotPresent(successDiv, defaultTimeOut);
+        waitForElement(importField, defaultTimeOut);
+        importField.sendKeys(pathToCSVFile);
+        tryClick(nextStepLink, defaultTimeOut);
+    }
+
+    public void checkNoFileUploadMessage() {
+        waitForElement(errorDiv, defaultTimeOut);
+        assertTrue(elementContainsText(errorDiv, pleaseUploadCSVMessage));
+    }
+
+    public void uploadWrongFileFormat() {
+        waitUntilElementNotPresent(successDiv, defaultTimeOut);
+        waitForElement(importField, defaultTimeOut);
+        importField.sendKeys(pathToIMGFile);
+        tryClick(importFileButton, defaultTimeOut);
+    }
+
+    public void checkWrongFileNotUploaded() {
+        System.out.println("This is the value of defaultTimeOut: " + defaultTimeOut);
+        waitForElement(errorDiv, defaultTimeOut);
+        assertTrue(elementContainsText(errorDiv, wrongFileUploadedMessage));
+    }
+
 }

@@ -2,9 +2,7 @@
 Feature: Communications test feature
 
   Background: Login
-    Given I navigate to the Login page
-    And I log in using my username and password
-    Then I should be logged in
+    Given I log in to the CrowdReach web-app
 
   @CRMVP-17 @sanity
   Scenario: Ted wants to send a one click message to his customers

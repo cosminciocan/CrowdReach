@@ -2,9 +2,7 @@
 Feature: Testing the adding of contacts
 
   Background: User login
-    Given I navigate to the Login page
-    When I log in using my username and password
-    Then I should be logged in
+    Given I log in to the CrowdReach web-app
 
   @CRMVP-12 @sanity
   Scenario: Ted wants to enter contacts manually

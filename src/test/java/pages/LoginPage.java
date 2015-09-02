@@ -29,9 +29,9 @@ public class LoginPage extends TestBase {
     }
 
     public void login(String username, String password) {
+        waitForElement(usernameField, defaultTimeOut);
         if (isElementPresent(successDiv))
             waitUntilElementNotPresent(successDiv, defaultTimeOut);
-        waitForElement(usernameField, defaultTimeOut);
         assertTrue(isAttribtuePresent(usernameField, "required"));
         setText(usernameField, username);
         setText(passwordField, password);

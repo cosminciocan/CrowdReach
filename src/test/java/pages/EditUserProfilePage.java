@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 import static junit.framework.Assert.*;
 
-/**
+/***
  * Created by cciocan on 28-Aug-15.
  */
 public class EditUserProfilePage extends TestBase {

@@ -58,4 +58,11 @@ public class LoginSteps extends TestBase {
     }
 
 
+    @Given("^I log in to the CrowdReach web-app$")
+    public void I_log_in() throws Throwable {
+        loginPage.openPage();
+        loginPage.login(userNameValue, userPasswordValue);
+        loginPage.confirmLoggedIn();
+    }
+
 }

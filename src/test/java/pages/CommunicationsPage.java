@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 import static junit.framework.Assert.*;
 
-/**
+/***
  * Created by cciocan on 02-Sep-15.
  */
 public class CommunicationsPage extends TestBase {

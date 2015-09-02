@@ -2,9 +2,7 @@
 Feature: Edit Business profile feature
 
   Background: Login
-    Given I navigate to the Login page
-    And I log in using my username and password
-    Then I should be logged in
+    Given I log in to the CrowdReach web-app
 
   @CRMVP-16 @sanity
   Scenario: Ted wants to change details about his business (name, address, phone number, logo)

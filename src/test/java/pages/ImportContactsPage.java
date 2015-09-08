@@ -58,7 +58,6 @@ public class ImportContactsPage extends TestBase {
         for (int i = 0; i < fileFields.size() - 1; i++) {
             String mapNameValue = listOfMapFields.get(i).getText();
             (new Actions(driver)).dragAndDrop(listOfMapFields.get(i), fileFields.get(i)).perform();
-            Sleep(2);
             assertTrue(elementContainsText(fileFields.get(i), mapNameValue));
         }
         tryClick(nextStepLink, defaultTimeOut);

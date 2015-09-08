@@ -14,9 +14,10 @@ Feature: Edit User Profile
 #    Then I set the default password for the test account
 #    Then I should be able to login using that password
 
-  Scenario: Checking password max length validations
-    Given I navigate to the Edit User Profile page
-    Then I check the field max length validations
+#  TODO: Uncomment when validations are applied
+#  Scenario: Checking password max length validations
+#    Given I navigate to the Edit User Profile page
+#    Then I check the field max length validations
 
   Scenario: Old password not correct
     Given I navigate to the Edit User Profile page

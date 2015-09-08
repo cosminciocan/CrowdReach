@@ -21,15 +21,17 @@ Feature: Testing the adding of contacts
     Given I navigate to the Add Contacts Manually page
     Then I check that all the fields are mandatory
 
-  Scenario: The user clicks next without uploading a file
-    When I navigate to the Import From CSV page
-    And I try to proceed to the next step without uploading a file
-    Then I should see an error and remain on the same page
+ #  TODO: Uncomment when Log Out is implemented and add that to the tests
+#  Scenario: The user clicks next without uploading a file
+#    When I navigate to the Import From CSV page
+#    And I try to proceed to the next step without uploading a file
+#    Then I should see an error and remain on the same page
 
-  Scenario: Upload a wrong format file
-    When I navigate to the Import From CSV page
-    And I try to upload a file type different than CSV
-    Then the file should not be uploaded
-
+#  TODO: Uncomment when Log Out is implemented and add that to the tests
+#  Scenario: Upload a wrong format file
+#    When I navigate to the Import From CSV page
+#    And I try to upload a file type different than CSV
+#    Then the file should not be uploaded
+#
 
 

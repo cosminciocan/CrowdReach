@@ -29,6 +29,7 @@ public class LoginPage extends TestBase {
     }
 
     public void login(String username, String password) {
+        driver.manage().deleteAllCookies();
         waitForElement(usernameField, defaultTimeOut);
         if (isElementPresent(successDiv))
             waitUntilElementNotPresent(successDiv, defaultTimeOut);

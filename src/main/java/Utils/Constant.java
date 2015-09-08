@@ -81,7 +81,7 @@ public class Constant {
     @FindBy(className = "btn-square")
     public WebElement submitButton;
 
-    @FindBy(className = "btn-default")
+    @FindBy(className = "btn-block")
     public WebElement saveChangesButton;
 
     @FindBy(className = "toast-error")

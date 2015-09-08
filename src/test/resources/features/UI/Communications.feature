@@ -22,6 +22,8 @@ Feature: Communications test feature
       | Email       |
       | TextMessage |
 
+
+#    TODO: Uncomment this when fixed
   Scenario Outline: Writing in the general field then editing a specific field
     Given I navigate to the Communications Page
     When I complete the general message field with a text message

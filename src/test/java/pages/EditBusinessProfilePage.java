@@ -41,7 +41,7 @@ public class EditBusinessProfilePage extends TestBase {
         phoneField.sendKeys(editPhone);
         uploadField.sendKeys(pathToIMGFile);
         waitUntilElementNotPresent(successDiv, defaultTimeOut);
-        tryClick(saveChangesButton, defaultTimeOut);
+        tryClick(submitButton, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, editedProfileMessage));
         assertTrue(uploadField.getAttribute("value").contains(imgFileName));
 

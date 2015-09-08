@@ -21,7 +21,7 @@ public class CommunicationsPage extends TestBase {
     public WebElement twitterField;
     @FindBy(id = "facebook")
     public WebElement facebookField;
-    @FindBy(id = "email")
+    @FindBy(className = "note-editable")
     public WebElement emailField;
     @FindBy(id = "textMessage")
     public WebElement textMessageField;

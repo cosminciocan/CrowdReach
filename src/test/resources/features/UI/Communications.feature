@@ -23,20 +23,19 @@ Feature: Communications test feature
       | TextMessage |
 
 
-##    TODO: Uncomment this when fixed
-#  Scenario Outline: Writing in the general field then editing a specific field
-#    Given I navigate to the Communications Page
-#    When I complete the general message field with a text message
-#    Then the message is also written in the social media, email and text message fields
-#    When I write a message in the "<name>" field
-#    Then the general message should not be changed
-#    And I complete the general message field with a text message
-#    Then the specific message for the field should not be changed
-#
-#    Examples:
-#      | name        |
-#      | Twitter     |
-#      | Facebook    |
-#      | Email       |
-#      | TextMessage |
+  Scenario Outline: Writing in the general field then editing a specific field
+    Given I navigate to the Communications Page
+    When I complete the general message field with a text message
+    Then the message is also written in the social media, email and text message fields
+    When I write a message in the "<name>" field
+    Then the general message should not be changed
+    And I complete the general message field with a text message
+    Then the specific message for the field should not be changed
+
+    Examples:
+      | name        |
+      | Twitter     |
+      | Facebook    |
+      | Email       |
+      | TextMessage |
 

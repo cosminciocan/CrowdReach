@@ -27,7 +27,7 @@ public class Driver {
             browser = System.getProperty("browser").toLowerCase();
         } catch (NullPointerException e) {
             System.out.println("No browser specified in the command line, using [CHROME] by default");
-            browser = "firefox";
+            browser = "chrome";
         }
         switch (browser) {
             case "firefox":

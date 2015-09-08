@@ -27,6 +27,7 @@ public class Constant {
     public final static String editBusinessProfilePath = "/editProfile";
     public final static String editUserProfilePath = "/editUserInfo";
     public final static String communicationPath = "/communications";
+    public final static String subscribersListPath = "/subscribers";
 
 
     //CREDENTIALS

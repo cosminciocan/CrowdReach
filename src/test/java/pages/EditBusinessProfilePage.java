@@ -19,6 +19,10 @@ public class EditBusinessProfilePage extends TestBase {
     public WebElement addressField;
     @FindBy(id = "profilePhone")
     public WebElement phoneField;
+//    @FindBy(css = ".ng-pristine.ng-valid-mask.ng-valid.ng-valid-required>img")
+    @FindBy(css = ".ng-valid-required [type^='image']")
+    public WebElement uploadedImage;
+
 
     @FindBy(className = "ng-isolate-scope")
     public WebElement uploadField;
@@ -44,11 +48,14 @@ public class EditBusinessProfilePage extends TestBase {
         tryClick(submitButton, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, editedProfileMessage));
         assertTrue(uploadField.getAttribute("value").contains(imgFileName));
-
+        assertTrue(isElementPresent(uploadedImage));
+        openPage();
+        tryClick(submitButton, defaultTimeOut);
     }
 
     public void checkEditedChanges() {
         openPage();
+        waitForElement(uploadedImage, defaultTimeOut);
         assertTrue(elementContainsText(nameField, editName));
         assertTrue(elementContainsText(addressField, editAddress));
 //        assertTrue(elementContainsText(phoneField, editPhone));

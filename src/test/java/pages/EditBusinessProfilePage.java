@@ -19,9 +19,11 @@ public class EditBusinessProfilePage extends TestBase {
     public WebElement addressField;
     @FindBy(id = "profilePhone")
     public WebElement phoneField;
-//    @FindBy(css = ".ng-pristine.ng-valid-mask.ng-valid.ng-valid-required>img")
-    @FindBy(css = ".ng-valid-required [type^='image']")
+    //    @FindBy(css = ".ng-pristine.ng-valid-mask.ng-valid.ng-valid-required>img")
+    @FindBy(css = ".ng-valid-required :not(.ng-hide)[type^='image']")
     public WebElement uploadedImage;
+    @FindBy(css = ".btn.ng-scope")
+    public WebElement deleteLogoButton;
 
 
     @FindBy(className = "ng-isolate-scope")
@@ -43,12 +45,10 @@ public class EditBusinessProfilePage extends TestBase {
         setText(nameField, editName);
         setText(addressField, editAddress);
         phoneField.sendKeys(editPhone);
-        uploadField.sendKeys(pathToIMGFile);
-        waitUntilElementNotPresent(successDiv, defaultTimeOut);
+        uploadImg();
         tryClick(submitButton, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, editedProfileMessage));
         assertTrue(uploadField.getAttribute("value").contains(imgFileName));
-        assertTrue(isElementPresent(uploadedImage));
         openPage();
         tryClick(submitButton, defaultTimeOut);
     }
@@ -68,5 +68,26 @@ public class EditBusinessProfilePage extends TestBase {
         assertFalse(isAttribtuePresent(phoneField, "required"));
         assertTrue(phoneField.getAttribute("type").equals("tel"));
         assertTrue(uploadField.getAttribute("type").equals("file"));
+    }
+
+    public void uploadImg(){
+        deleteLogo();
+        uploadField.sendKeys(pathToIMGFile);
+        waitForElement(uploadedImage, defaultTimeOut);
+    }
+
+    public void deleteLogo(){
+        if (isElementPresent(uploadedImage)) {
+            tryClick(deleteLogoButton, defaultTimeOut);
+            assertFalse(isElementPresent(uploadedImage));
+        }
+    }
+
+    public void checkLogo(){
+        tryClick(submitButton, defaultTimeOut);
+        assertTrue(elementContainsText(successDiv, editedProfileMessage));
+        openPage();
+        waitForElement(nameField, defaultTimeOut);
+        assertFalse(isElementPresent(uploadedImage));
     }
 }

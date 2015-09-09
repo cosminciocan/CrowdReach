@@ -37,4 +37,15 @@ public class EditBusinessProfileSteps extends TestBase{
         editBusinessProfilePage.checFieldsFormat();
     }
 
+    @And("^I can delete the uploaded logo$")
+    public void I_can_delete_the_uploaded_logo() throws Throwable {
+        editBusinessProfilePage.uploadImg();
+        editBusinessProfilePage.deleteLogo();
+    }
+
+    @Then("^the logo chage should be saved$")
+    public void the_logo_chage_should_be_saved() throws Throwable {
+        editBusinessProfilePage.checkLogo();
+    }
+
 }

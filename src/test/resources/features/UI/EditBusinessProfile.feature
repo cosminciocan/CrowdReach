@@ -18,3 +18,5 @@ Feature: Edit Business profile feature
   @CRMVP-163
   Scenario: Remove Logo Functionality
     Given I navigate to the Edit Business Profile page
+    And I can delete the uploaded logo
+    Then the logo chage should be saved

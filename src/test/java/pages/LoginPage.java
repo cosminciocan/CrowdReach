@@ -42,6 +42,7 @@ public class LoginPage extends TestBase {
     public void confirmLoggedIn() {
         waitForElement(successDiv, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, loggedInMessage));
+        waitUntilElementNotPresent(successDiv, defaultTimeOut);
     }
 
     public void checkLoggedInRequired() {
@@ -50,7 +51,7 @@ public class LoginPage extends TestBase {
         waitForElement(submitButton, defaultTimeOut);
     }
 
-    public void confirmNotLoggedIn(){
+    public void confirmNotLoggedIn() {
         waitForElement(errorDiv, defaultTimeOut);
         assertTrue(elementContainsText(errorDiv, incorrectLoginDetailsMessage));
     }

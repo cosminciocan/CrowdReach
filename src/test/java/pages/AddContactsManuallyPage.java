@@ -31,7 +31,7 @@ public class AddContactsManuallyPage extends TestBase {
     public WebElement notesArea;
     @FindBy(id = "contactsCountry")
     public WebElement countryField;
-    @FindBy(id = "contactsAddressLine1")
+    @FindBy(id = "contactsAddressLine1_value")
     public WebElement address1Field;
     @FindBy(id = "contactsAddressLine2")
     public WebElement address2Field;
@@ -66,7 +66,6 @@ public class AddContactsManuallyPage extends TestBase {
 
     public void manualContactAdded() {
         tryClick(submitButton, defaultTimeOut);
-        waitForElement(successDiv, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, addedContactMessage));
     }
 

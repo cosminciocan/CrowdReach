@@ -44,7 +44,7 @@ public class Constant {
 
 
     //    Messages
-    public static String addedContactMessage = "Successfully added new contact";
+    public static String addedContactMessage = "Successfully added new contact.";
     public static String loggedInMessage = "Login was successful";
     public static String registeredMessage = "Registration was successful";
     public static String uploadedMessage = "Your file was uploaded";

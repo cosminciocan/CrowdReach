@@ -44,6 +44,7 @@ public class Constant {
 
 
     //    Messages
+    public static String logOutButtonText = "LOG OUT";
     public static String addedContactMessage = "Successfully added new contact.";
     public static String loggedInMessage = "Login was successful";
     public static String registeredMessage = "Registration was successful";
@@ -82,7 +83,12 @@ public class Constant {
     @FindBy(className = "btn-square")
     public WebElement submitButton;
 
-    @FindBy(className = "btn-block")
+    @FindBy(id = "username")
+    public WebElement usernameField;
+    @FindBy(id = "password")
+    public WebElement passwordField;
+
+    @FindBy(className = "btn-default")
     public WebElement saveChangesButton;
 
     @FindBy(className = "toast-error")

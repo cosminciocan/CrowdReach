@@ -19,6 +19,8 @@ public class EditUserProfileSteps extends TestBase {
     protected String newPassword;
     protected String password;
     protected LoginPage loginPage;
+    public String loggedInUser;
+
 
 
     public EditUserProfileSteps() {
@@ -42,14 +44,14 @@ public class EditUserProfileSteps extends TestBase {
 
     @Then("^I should be able to login using that password$")
     public void I_should_be_able_to_login_using_that_password() throws Throwable {
-        loginPage.login(userNameValue, password);
-        loginPage.confirmLoggedIn();
+        loggedInUser = loginPage.login(userNameValue, password);
+        loginPage.confirmLoggedIn(loggedInUser);
     }
 
 
     @Then("^I set the default password for the test account$")
     public void I_set_the_default_password_for_the_test_account() throws Throwable {
-        editUserProfilePage.changePassword(newPassword, userPasswordValue, userPasswordValue);
+        password = editUserProfilePage.changePassword(newPassword, userPasswordValue, userPasswordValue);
         editUserProfilePage.checkPasswordChanged();
     }
 

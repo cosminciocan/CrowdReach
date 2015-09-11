@@ -17,10 +17,15 @@ public class LoginPage extends TestBase {
 
     Driver dv = new Driver();
     // Page Elements
-    @FindBy(id = "loginUser")
-    public WebElement usernameField;
-    @FindBy(id = "loginPassword")
-    public WebElement passwordField;
+
+
+    @FindBy(className = "login")
+    public WebElement logOutButton;
+    @FindBy(css = ".nav-btn.ng-binding")
+    public WebElement userNameNavBar;
+
+    @FindBy(className = "error")
+    public WebElement errorSpan;
 
 
     // METHODS
@@ -28,20 +33,27 @@ public class LoginPage extends TestBase {
         driver.get(logInUrl);
     }
 
-    public void login(String username, String password) {
-        driver.manage().deleteAllCookies();
-        waitForElement(usernameField, defaultTimeOut);
-        if (isElementPresent(successDiv))
-            waitUntilElementNotPresent(successDiv, defaultTimeOut);
-        assertTrue(isAttribtuePresent(usernameField, "required"));
-        setText(usernameField, username);
-        setText(passwordField, password);
-        submitButton.click();
+    public String login(String username, String password) {
+        if (isElementPresent(userNameNavBar)){
+            System.out.println("User already logged in");
+        } else {
+            driver.manage().deleteAllCookies();
+            waitForElement(usernameField, defaultTimeOut);
+//        if (isElementPresent(successDiv))
+//            waitUntilElementNotPresent(successDiv, defaultTimeOut);
+            assertTrue(isAttribtuePresent(usernameField, "required"));
+            setText(usernameField, username);
+            setText(passwordField, password);
+            submitButton.click();
+        }
+        return username;
     }
 
-    public void confirmLoggedIn() {
-        waitForElement(successDiv, defaultTimeOut);
-        assertTrue(elementContainsText(successDiv, loggedInMessage));
+    public void confirmLoggedIn(String username) {
+        waitForElement(userNameNavBar, defaultTimeOut);
+        assertTrue(elementContainsText(userNameNavBar, username));
+        waitForElement(logOutButton, defaultTimeOut);
+        assertTrue(elementContainsText(logOutButton, logOutButtonText));
         waitUntilElementNotPresent(successDiv, defaultTimeOut);
     }
 
@@ -52,7 +64,20 @@ public class LoginPage extends TestBase {
     }
 
     public void confirmNotLoggedIn() {
-        waitForElement(errorDiv, defaultTimeOut);
-        assertTrue(elementContainsText(errorDiv, incorrectLoginDetailsMessage));
+        waitForElement(errorSpan, defaultTimeOut);
+
+        assertTrue(elementContainsText(errorSpan, "Invalid Password"));
     }
+
+    public void logOut() {
+        if (isElementPresent(logOutButton)) {
+            tryClick(logOutButton, defaultTimeOut);
+            openPage();
+            waitForElement(logOutButton,defaultTimeOut);
+            assertTrue(elementContainsText(logOutButton,"LOGIN"));
+        } else {
+            System.out.println("User not logged in.");
+        }
+    }
+
 }

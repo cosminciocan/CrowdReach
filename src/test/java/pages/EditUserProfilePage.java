@@ -16,9 +16,8 @@ public class EditUserProfilePage extends TestBase {
 
     @FindBy(id = "oldPasswordUserInfo")
     public WebElement oldPasswordField;
-    @FindBy(id = "newPasswordUserInfo")
-    public WebElement onewPasswordField;
-    @FindBy(id = "confirmPasswordUserInfo")
+
+    @FindBy(id = "rePassword")
     public WebElement confirmPasswordField;
 
 
@@ -29,24 +28,24 @@ public class EditUserProfilePage extends TestBase {
     //    TODO: Remove the assertion from the method,and then the old and new test
     public String changePassword(String oldPassword, String newPassword, String confirmPassword) {
         setText(oldPasswordField, oldPassword);
-        setText(onewPasswordField, newPassword);
+        setText(passwordField, newPassword);
         setText(confirmPasswordField, confirmPassword);
         tryClick(saveChangesButton, defaultTimeOut);
         return newPassword;
     }
 
     public void checkPasswordChanged() {
-        assertTrue(elementContainsText(successDiv, passwordChangedMessage));
+//        assertTrue(elementContainsText(successDiv, passwordChangedMessage));
         assertFalse(isElementPresent(errorDiv));
     }
 
     public void checkFieldMaxValidations() {
         String maxLength = "" + textFieldDefaultLenght;
         assertTrue(isAttribtuePresent(oldPasswordField, "required"));
-        assertTrue(isAttribtuePresent(onewPasswordField, "required"));
+        assertTrue(isAttribtuePresent(passwordField, "required"));
         assertTrue(isAttribtuePresent(confirmPasswordField, "required"));
         assertTrue(oldPasswordField.getAttribute("maxlength").equals(maxLength));
-        assertTrue(onewPasswordField.getAttribute("maxlength").equals(maxLength));
+        assertTrue(passwordField.getAttribute("maxlength").equals(maxLength));
         assertTrue(confirmPasswordField.getAttribute("maxlength").equals(maxLength));
     }
 
@@ -55,6 +54,7 @@ public class EditUserProfilePage extends TestBase {
     }
 
     public void checkPwdToShortMessage() {
+        assertTrue(isAttribtuePresent(saveChangesButton, "disabled"));
         assertTrue(elementContainsText(errorDiv, shortNewPasswordMessage));
     }
 

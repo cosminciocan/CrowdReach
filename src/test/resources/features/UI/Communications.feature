@@ -9,11 +9,13 @@ Feature: Communications test feature
     Given I navigate to the Communications Page
     When I complete the general message field with a text message
     Then the message is also written in the social media, email and text message fields
+    And I log out
 
   Scenario Outline: Writing a message in the non-general fields does not complete the other fields
     Given I navigate to the Communications Page
     When I write a message in the "<name>" field
     Then It should not be copied in the other fields
+    And I log out
 
     Examples:
       | name        |
@@ -31,6 +33,7 @@ Feature: Communications test feature
     Then the general message should not be changed
     And I complete the general message field with a text message
     Then the specific message for the field should not be changed
+    And I log out
 
     Examples:
       | name        |

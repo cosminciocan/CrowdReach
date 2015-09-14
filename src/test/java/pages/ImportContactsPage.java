@@ -19,7 +19,7 @@ public class ImportContactsPage extends TestBase {
     private String url = baseUrl + importContactsPath;
 
 
-    @FindBy(css = ".ng-pristine.ng-untouched.ng-valid")
+    @FindBy(css = ".cr-file-upload .form-control")
     public WebElement importField;
     @FindBy(css = ".btn-square.pull-right")
     public WebElement importFileButton;
@@ -27,11 +27,11 @@ public class ImportContactsPage extends TestBase {
     public WebElement listOfFieldsDiv;
     @FindBy(className = "btn-draggable")
     public List<WebElement> listOfMapFields;
-    @FindBy(className = "thumbnail")
+    @FindBy(className = "cr-thumbnail-small")
     public List<WebElement> fileFields;
     @FindBy(css = "td .ng-scope")
     public List<WebElement> tableRowValues;
-    @FindBy(css = ".col-md-1.col-md-offset-4>a")
+    @FindBy(className = "btn-square-default")
     public WebElement nextStepLink;
     @FindBy(className = "table-striped")
     public WebElement importedValuesTable;
@@ -45,8 +45,8 @@ public class ImportContactsPage extends TestBase {
     public void uploadFile() {
         waitUntilElementNotPresent(successDiv, defaultTimeOut);
         waitForElement(importFileButton, defaultTimeOut);
-        waitForElement(importField, defaultTimeOut);
-        assertTrue(importField.getAttribute("type").equals("file"));
+        importField.sendKeys(pathToCSVFile);
+//        assertTrue(importField.getAttribute("type").equals("file"));
         importField.sendKeys(pathToCSVFile);
         tryClick(importFileButton, defaultTimeOut);
         tryClick(successDiv, defaultTimeOut);
@@ -55,7 +55,7 @@ public class ImportContactsPage extends TestBase {
 
     public void mapImportedFile() {
         waitForElement(listOfFieldsDiv, defaultTimeOut);
-        for (int i = 0; i < fileFields.size() - 1; i++) {
+        for (int i = 0; i < fileFields.size(); i++) {
             String mapNameValue = listOfMapFields.get(i).getText();
             (new Actions(driver)).dragAndDrop(listOfMapFields.get(i), fileFields.get(i)).perform();
             assertTrue(elementContainsText(fileFields.get(i), mapNameValue));

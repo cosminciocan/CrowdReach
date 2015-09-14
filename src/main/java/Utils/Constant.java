@@ -24,11 +24,10 @@ public class Constant {
     public final static String logOutPath = "";
     public final static String addContactsPath = "/contacts/enterManually";
     public final static String importContactsPath = "/contacts/csvImport/step1";
-    public final static String editBusinessProfilePath = "/editProfile";
+    public final static String editBusinessProfilePath = "/businessProfile";
     public final static String editUserProfilePath = "/editUserInfo";
     public final static String communicationPath = "/communications";
     public final static String subscribersListPath = "/subscribers";
-
 
     //CREDENTIALS
     public String userNameValue = config().getProperty("usernameValue");

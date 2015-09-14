@@ -30,7 +30,7 @@ public class EditUserProfilePage extends TestBase {
         setText(oldPasswordField, oldPassword);
         setText(passwordField, newPassword);
         setText(confirmPasswordField, confirmPassword);
-        tryClick(saveChangesButton, defaultTimeOut);
+        tryClick(submitButton, defaultTimeOut);
         return newPassword;
     }
 

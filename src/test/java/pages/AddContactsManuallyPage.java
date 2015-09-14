@@ -2,6 +2,7 @@ package pages;
 
 
 import Utils.TestBase;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -65,6 +66,8 @@ public class AddContactsManuallyPage extends TestBase {
     }
 
     public void manualContactAdded() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("javascript:window.scrollBy(250,350)");
         tryClick(submitButton, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, addedContactMessage));
     }

@@ -22,7 +22,7 @@ public class EditBusinessProfilePage extends TestBase {
     //    @FindBy(css = ".ng-pristine.ng-valid-mask.ng-valid.ng-valid-required>img")
     @FindBy(css = ".ng-valid-required :not(.ng-hide)[type^='image']")
     public WebElement uploadedImage;
-    @FindBy(css = ".btn.ng-scope")
+    @FindBy(css = ".form-group.fileUpload.btn.btn-upload.ng-scope")
     public WebElement deleteLogoButton;
 
 

@@ -23,6 +23,7 @@ public class LoginSteps extends TestBase {
 
     @Given("^I navigate to the Login page$")
     public void The_user_navigates_to_the_Login_page() throws Throwable {
+        Sleep(2);
         loginPage.openPage();
     }
 

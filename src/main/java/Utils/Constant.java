@@ -13,12 +13,14 @@ import java.util.Date;
 import java.util.List;
 
 import static webdriver.Driver.config;
+import static webdriver.Driver.getWebdriver;
+
 
 
 public class Constant {
 
     //    URL
-    public final static String baseUrl = config().getProperty("rootUrl");
+    public final static String baseUrl = Driver.config().getProperty("rootUrl");
     public final static String registerPath = "/register";
     public final static String loginPath = "/login";
     public final static String logOutPath = "";

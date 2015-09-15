@@ -90,7 +90,6 @@ public class ImportContactsPage extends TestBase {
     }
 
     public void checkWrongFileNotUploaded() {
-        System.out.println("This is the value of defaultTimeOut: " + defaultTimeOut);
         waitForElement(errorDiv, defaultTimeOut);
         assertTrue(elementContainsText(errorDiv, wrongFileUploadedMessage));
     }

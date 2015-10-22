@@ -13,23 +13,24 @@ import java.util.Date;
 import java.util.List;
 
 import static webdriver.Driver.config;
+import static webdriver.Driver.getWebdriver;
+
 
 
 public class Constant {
 
     //    URL
-    public final static String baseUrl = config().getProperty("rootUrl");
+    public final static String baseUrl = Driver.config().getProperty("rootUrl");
     public final static String registerPath = "/register";
     public final static String loginPath = "/login";
     public final static String logOutPath = "";
     public final static String addContactsPath = "/contacts/enterManually";
     public final static String importContactsPath = "/contacts/csvImport/step1";
-    public final static String editBusinessProfilePath = "/editProfile";
+    public final static String editBusinessProfilePath = "/businessProfile";
     public final static String editUserProfilePath = "/editUserInfo";
     public final static String communicationPath = "/communications";
     public final static String subscribersListPath = "/subscribers";
     public final static String changePasswordPath = "/changepassword";
-
 
 
     //CREDENTIALS
@@ -47,7 +48,8 @@ public class Constant {
 
 
     //    Messages
-    public static String addedContactMessage = "Successfully added new contact";
+    public static String logOutButtonText = "LOG OUT";
+    public static String addedContactMessage = "Successfully added new contact.";
     public static String loggedInMessage = "Login was successful";
     public static String registeredMessage = "Registration was successful";
     public static String uploadedMessage = "Your file was uploaded";
@@ -86,7 +88,12 @@ public class Constant {
     @FindBy(className = "btn-square")
     public WebElement submitButton;
 
-    @FindBy(className = "btn-block")
+    @FindBy(id = "username")
+    public WebElement usernameField;
+    @FindBy(id = "password")
+    public WebElement passwordField;
+
+    @FindBy(className = "btn-default")
     public WebElement saveChangesButton;
 
     @FindBy(className = "toast-error")

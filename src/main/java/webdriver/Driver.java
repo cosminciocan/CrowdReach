@@ -76,7 +76,7 @@ public class Driver {
             environment = System.getProperty("env").toLowerCase();
         } catch (NullPointerException e) {
             System.out.println("No environment specified in the command line. Using [local] by default.");
-            environment = "stage";
+            environment = "local";
         }
         try {
             stream = new FileInputStream("src/main/resources/" + environment + ".properties");

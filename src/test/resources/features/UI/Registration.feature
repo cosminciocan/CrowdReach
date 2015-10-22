@@ -12,7 +12,6 @@ Feature: Testing the Registration functionality
     When Ted wants to identify his business type so that the features shall be tailored to his business
     Then Ted should be able to register successfully
     And Ted should be able to log in
-    Then I should be logged in
 
   Scenario: Checking the mandatory fields
     Given I want to register

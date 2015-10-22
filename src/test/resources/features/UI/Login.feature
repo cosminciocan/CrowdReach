@@ -26,3 +26,4 @@ Feature: Login feature
     Then I should see an error message
     And I enter an incorrect password for a valid user
     Then I should see an error message
+

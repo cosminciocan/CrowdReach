@@ -78,6 +78,7 @@ public class RegisterPage extends TestBase {
     }
 
     public void confirmRegistered() {
+        waitUntilElementNotPresent(successDiv, defaultTimeOut);
         tryClick(submitButton, defaultTimeOut);
         waitForElement(successDiv, defaultTimeOut);
 //        Sleep(0.5);

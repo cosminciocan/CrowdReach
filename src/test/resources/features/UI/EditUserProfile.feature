@@ -4,15 +4,14 @@ Feature: Edit User Profile
   Background: Login
     Given I log in to the CrowdReach web-app
 
-#    todo: Uncomment this when change password is fixed
-#  @CRMVP-10 @sanity
-#  Scenario: Ted wants to change his password
-#    Given I navigate to the Edit User Profile page
-#    When I input the old password and set a new password
-#    Then I should be able to login using that password
-#    And I navigate to the Edit User Profile page
-#    Then I set the default password for the test account
-#    Then I should be able to login using that password
+  @CRMVP-10 @sanity
+  Scenario: Ted wants to change his password
+    Given I navigate to the Change Password page
+    When I input the old password and set a new password
+    Then I should be able to login using that password
+    And I navigate to the Edit User Profile page
+    Then I set the default password for the test account
+    Then I should be able to login using that password
 
 #  TODO: Uncomment when validations are applied
 #  Scenario: Checking password max length validations
@@ -20,16 +19,16 @@ Feature: Edit User Profile
 #    Then I check the field max length validations
 
   Scenario: Old password not correct
-    Given I navigate to the Edit User Profile page
+    Given I navigate to the Change Password page
     When I enter an incorrect old password
     Then I should see an error message regarding the old password
 
   Scenario: New password to short
-    Given I navigate to the Edit User Profile page
+    Given I navigate to the Change Password page
     When I enter a new password of 7 characters
     Then I should see an error message regarding the password being to short
 
   Scenario: The new and confirm password do not match
-    Given I navigate to the Edit User Profile page
+    Given I navigate to the Change Password page
     When I type the confirm password different from the new one
     Then I shouls see an error message regarding the confirm password

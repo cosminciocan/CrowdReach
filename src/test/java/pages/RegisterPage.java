@@ -60,7 +60,7 @@ public class RegisterPage extends TestBase {
     }
 
     public String setPasswordField() {
-        userPasswordValue = generateRandomAlphaNumeric(8);
+        userPasswordValue = generateRandomAlphaNumeric(15);
         setText(passwordField, userPasswordValue);
         return userPasswordValue;
     }
@@ -83,6 +83,7 @@ public class RegisterPage extends TestBase {
 //        Sleep(0.5);
 //        tryClick(successDiv, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, registeredMessage));
+
     }
 
 

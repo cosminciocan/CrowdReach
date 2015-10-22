@@ -65,4 +65,8 @@ public class LoginSteps extends TestBase {
         loginPage.confirmLoggedIn();
     }
 
+    @And("^I log out$")
+    public void I_log_out() throws Throwable {
+        loginPage.logOut();
+    }
 }

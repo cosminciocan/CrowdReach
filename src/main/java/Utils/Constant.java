@@ -28,6 +28,8 @@ public class Constant {
     public final static String editUserProfilePath = "/editUserInfo";
     public final static String communicationPath = "/communications";
     public final static String subscribersListPath = "/subscribers";
+    public final static String changePasswordPath = "/changepassword";
+
 
 
     //CREDENTIALS
@@ -41,6 +43,7 @@ public class Constant {
     public static List tableValues = Arrays.asList("TestName1", "TestName2", "TestName3", "TestName4");
     public static int textFieldDefaultLenght = 50;
     public static int textAreaDefaultLenght = 255;
+    public static int generatedPasswordLength = 8;
 
 
     //    Messages
@@ -51,10 +54,11 @@ public class Constant {
     public static String editedProfileMessage = "Successfully saved profile changes.";
     public static String passwordChangedMessage = "";
     public static String incorrectLoginDetailsMessage = "Username or password is incorrect. Please try again.";
+    public static String incorrectLoginPassword = "Invalid Password";
     public static String pleaseUploadCSVMessage = "Please upload a csv file";
     public static String wrongFileUploadedMessage = "";
     public static String shortNewPasswordMessage = "New password should be at least 8 characters long.";
-    public static String incorrectOldPasswordMessage = "There was an error on the server";
+    public static String incorrectOldPasswordMessage = "Invalid Password";
     public static String newAndConfirmPasswordMessage = "New and Confirm Password does not match.";
 
 
@@ -92,31 +96,12 @@ public class Constant {
     //    Header
     @FindBy(className = "toast-message")
     public WebElement successDiv;
-
-
-    //      Edit Capacity Shift Page
-    @FindBy(id = "btnAddShift")
-    public WebElement addShiftButton;
-
-
-    //    Make a reservation page
-    @FindBy(id = "btnMakeReservation")
-    public WebElement makeReservationButton;
-
-
-    //    Manage reservation page
-    @FindBy(id = "searchReservations")
-    public WebElement manageMakeReservation;
-
-
-    //    Manage Wait List Page
-    @FindBy(id = "waitListTable")
-    public WebElement waitListTable;
-
-
-    //    Contact Us Page
-    @FindBy(id = "locationDdl")
-    public WebElement selectProcessingCenter;
+    @FindBy(className = "cr-logged-user-name")
+    public WebElement welcomeNameDiv;
+    @FindBy(className = "cr-logout")
+    public WebElement logOutButton;
+    @FindBy(className = "col-sm-10")
+    public WebElement logInDiv;
 
 
 }

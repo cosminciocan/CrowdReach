@@ -60,6 +60,7 @@ public class RegistrationSteps extends TestBase {
 
     @And("^Ted should be able to log in$")
     public void Ted_should_be_able_to_log_in() throws Throwable {
+        loginPage.logOut();
         loginPage.openPage();
         loginPage.login(username, password);
     }

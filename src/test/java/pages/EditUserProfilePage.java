@@ -14,11 +14,11 @@ public class EditUserProfilePage extends TestBase {
 
     public String url = baseUrl + editUserProfilePath;
 
-    @FindBy(id = "oldPasswordUserInfo")
+    @FindBy(id = "oldPassword")
     public WebElement oldPasswordField;
-    @FindBy(id = "newPasswordUserInfo")
+    @FindBy(id = "registerPassword")
     public WebElement onewPasswordField;
-    @FindBy(id = "confirmPasswordUserInfo")
+    @FindBy(id = "registerConfirmPassword")
     public WebElement confirmPasswordField;
 
 

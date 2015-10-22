@@ -1,12 +1,14 @@
 package steps;
 
 import Utils.TestBase;
+import com.gargoylesoftware.htmlunit.Page;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.support.PageFactory;
+import pages.ChangePasswordPage;
 import pages.EditUserProfilePage;
 import pages.LoginPage;
 import webdriver.Driver;
@@ -16,6 +18,7 @@ import webdriver.Driver;
  */
 public class EditUserProfileSteps extends TestBase {
     protected EditUserProfilePage editUserProfilePage;
+    protected ChangePasswordPage changePasswordPage;
     protected String newPassword;
     protected String password;
     protected LoginPage loginPage;
@@ -24,6 +27,7 @@ public class EditUserProfileSteps extends TestBase {
     public EditUserProfileSteps() {
         editUserProfilePage = PageFactory.initElements(Driver.getWebdriver(), EditUserProfilePage.class);
         loginPage = PageFactory.initElements(Driver.getWebdriver(), LoginPage.class);
+        changePasswordPage = PageFactory.initElements(Driver.getWebdriver(), ChangePasswordPage.class);
     }
 
 
@@ -34,7 +38,7 @@ public class EditUserProfileSteps extends TestBase {
 
     @When("^I input the old password and set a new password$")
     public void I_input_the_old_password_and_set_a_new_password() throws Throwable {
-        newPassword = generateRandomAlphaNumeric(8);
+        newPassword = generateRandomAlphaNumeric(generatedPasswordLength);
         password = editUserProfilePage.changePassword(userPasswordValue, newPassword, newPassword);
         editUserProfilePage.checkPasswordChanged();
 
@@ -61,7 +65,7 @@ public class EditUserProfileSteps extends TestBase {
 
     @When("^I enter an incorrect old password$")
     public void I_enter_an_incorrect_old_password() throws Throwable {
-        newPassword = generateRandomAlphaNumeric(8);
+        newPassword = generateRandomAlphaNumeric(generatedPasswordLength);
         editUserProfilePage.changePassword(newPassword, newPassword, newPassword);
     }
 
@@ -79,7 +83,7 @@ public class EditUserProfileSteps extends TestBase {
 
     @When("^I type the confirm password different from the new one$")
     public void I_type_the_confirm_password_different_from_the_new_one() throws Throwable {
-        newPassword = generateRandomAlphaNumeric(8);
+        newPassword = generateRandomAlphaNumeric(generatedPasswordLength);
         editUserProfilePage.changePassword(userPasswordValue, newPassword, generateRandomAlphaNumeric(8));
     }
 
@@ -92,4 +96,10 @@ public class EditUserProfileSteps extends TestBase {
     public void I_shouls_see_an_error_message_regarding_the_confirm_password() throws Throwable {
         editUserProfilePage.checkConfirmPwdNotMatchMessage();
     }
+
+    @Given("^I navigate to the Change Password page$")
+    public void I_navigate_to_the_Change_Password_page() throws Throwable {
+        changePasswordPage.openPage();
+    }
+
 }

@@ -101,7 +101,14 @@ public abstract class TestBase extends Constant {
     }
 
     public String generateRandomAlphaNumeric(int length) {
-        return RandomStringUtils.randomAlphanumeric(length);
+         String y = "";
+        if (length > 2){
+            int lastDigits  = length  - 2 ;
+             y = RandomStringUtils.randomNumeric(lastDigits);
+        }
+        String x = RandomStringUtils.randomAlphanumeric(length);
+        String finalRandomValue = x + y;
+        return finalRandomValue;
     }
 
     public static String setDateNow() throws ParseException {
@@ -268,6 +275,8 @@ public abstract class TestBase extends Constant {
 //  Do nothing
         return result;
     }
+
+
 
 ////    Run JS
 //      JavascriptExecutor js;

@@ -108,8 +108,7 @@ public abstract class TestBase extends Constant {
              x = RandomStringUtils.randomAlphanumeric(length - 2);
         } else
         x = RandomStringUtils.randomAlphanumeric(length);
-        String finalRandomValue = x + y;
-        return finalRandomValue;
+        return x + y;
     }
 
     public static String setDateNow() throws ParseException {
@@ -159,11 +158,7 @@ public abstract class TestBase extends Constant {
             return true;
         } else {
             try {
-                if (element.getAttribute("value").contains(text)) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return element.getAttribute("value").contains(text);
             } catch (NullPointerException error) {
                 return false;
             }
@@ -271,7 +266,7 @@ public abstract class TestBase extends Constant {
             if (value != null) {
                 result = true;
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
 //  Do nothing
         return result;

@@ -51,7 +51,6 @@ public class LoginPage extends TestBase {
     }
 
     public void confirmLoggedIn(String loggedInUser) {
-//        System.out.println("this is the used username: " + loggedInUser);
         if (isElementPresent(welcomeNameDiv)) {
             if ((elementContainsText(welcomeNameDiv, ("Welcome, " + loggedInUser + "!"))) ||
                     elementContainsText(welcomeNameDiv, "Welcome, " + loggedInUserNameValue + "!")) {
@@ -59,11 +58,6 @@ public class LoginPage extends TestBase {
                 loggedIn = true;
             }
         }
-//
-//        assertTrue((elementContainsText(welcomeNameDiv, ("Welcome, " + loggedInUser + "!"))) ||
-//        elementContainsText(welcomeNameDiv, loggedInUserNameValue));
-//        waitForElement(successDiv, defaultTimeOut);
-//        assertTrue(elementContainsText(successDiv, loggedInMessage));
     }
 
     public void checkLoggedInRequired() {

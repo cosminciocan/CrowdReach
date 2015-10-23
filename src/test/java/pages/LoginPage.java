@@ -86,4 +86,9 @@ public class LoginPage extends TestBase {
             login(userNameValue, userPasswordValue);
         }
     }
+
+    public void checkLoggedOut(){
+        if (isTextPresent("Log Out"))
+            logOut();
+    }
 }

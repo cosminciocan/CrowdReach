@@ -29,6 +29,7 @@ public class RegistrationSteps extends TestBase {
 
     @And("^I navigate to the Register page$")
     public void The_user_navigates_to_the_Register_page() throws Throwable {
+        loginPage.checkLoggedOut();
         registerPage.openPage();
     }
 

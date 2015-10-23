@@ -111,6 +111,8 @@ public class Constant {
     public WebElement logOutButton;
     @FindBy(className = "col-sm-10")
     public WebElement logInDiv;
+    @FindBy(className = "cr-top-menu")
+    public WebElement topMenuDiv;
 
 
 }

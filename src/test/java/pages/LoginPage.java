@@ -23,7 +23,8 @@ public class LoginPage extends TestBase {
     public WebElement passwordField;
     @FindBy(className = "col-sm-10")
     public WebElement logInDiv;
-
+    @FindBy(css = ".has-error.ng-binding")
+    public WebElement hasErrorSpan;
 
     public static String loggedInUserNameValue;
     public static boolean loggedIn = false;

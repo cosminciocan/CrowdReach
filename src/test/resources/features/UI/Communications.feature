@@ -1,4 +1,4 @@
-@ready
+
 Feature: Communications test feature
 
   Background: Login

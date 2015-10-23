@@ -1,4 +1,4 @@
-@ready
+
 Feature: Testing the adding of contacts
 
   Background: User login

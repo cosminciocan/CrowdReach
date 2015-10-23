@@ -1,4 +1,4 @@
-@ready
+
 Feature: Edit Business profile feature
 
   Background: Login

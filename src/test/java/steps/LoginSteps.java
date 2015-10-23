@@ -70,4 +70,14 @@ public class LoginSteps extends TestBase {
     public void I_log_out() throws Throwable {
         loginPage.logOut();
     }
+
+    @Given("^I check if I am logged in$")
+    public void I_check_if_I_am_logged_in() throws Throwable {
+        loginPage.openPage();
+        loginPage.confirmLoggedIn(loggedInUser);
+        loginPage.executeLogin();
+        loginPage.confirmLoggedIn(loggedInUser);
+    }
+
+
 }

@@ -48,6 +48,8 @@ public class EditUserProfileSteps extends TestBase {
 
     @Then("^I should be able to login using that password$")
     public void I_should_be_able_to_login_using_that_password() throws Throwable {
+        loginPage.logOut();
+        loginPage.openPage();
         loggedInUser = loginPage.login(userNameValue, password);
         loginPage.confirmLoggedIn(loggedInUser);
     }

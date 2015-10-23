@@ -102,11 +102,12 @@ public abstract class TestBase extends Constant {
 
     public String generateRandomAlphaNumeric(int length) {
          String y = "";
+        String x = "";
         if (length > 2){
-            int lastDigits  = length  - 2 ;
-             y = RandomStringUtils.randomNumeric(lastDigits);
-        }
-        String x = RandomStringUtils.randomAlphanumeric(length);
+             y = RandomStringUtils.randomNumeric(2);
+             x = RandomStringUtils.randomAlphanumeric(length - 2);
+        } else
+        x = RandomStringUtils.randomAlphanumeric(length);
         String finalRandomValue = x + y;
         return finalRandomValue;
     }

@@ -23,17 +23,17 @@ public class LoginPage extends TestBase {
     public WebElement passwordField;
     @FindBy(className = "col-sm-10")
     public WebElement logInDiv;
-    @FindBy(css = ".has-error.ng-binding")
-    public WebElement hasErrorSpan;
+
 
     public static String loggedInUserNameValue;
+    public static boolean loggedIn = false;
 
         // METHODS
     public void openPage() {
         driver.get(logInUrl);
     }
 
-    public void login(String username, String password) {
+    public String login(String username, String password) {
         loggedInUserNameValue = username;
         driver.manage().deleteAllCookies();
         waitForElement(usernameField, defaultTimeOut);
@@ -43,11 +43,21 @@ public class LoginPage extends TestBase {
         setText(usernameField, loggedInUserNameValue);
         setText(passwordField, password);
         submitButton.click();
+        return loggedInUserNameValue;
     }
 
-    public void confirmLoggedIn() {
-        System.out.println("this is the used username: " + loggedInUserNameValue);
-        assertTrue(elementContainsText(welcomeNameDiv, ("Welcome, " + loggedInUserNameValue + "!")));
+    public void confirmLoggedIn(String loggedInUser) {
+//        System.out.println("this is the used username: " + loggedInUser);
+        if (isElementPresent(welcomeNameDiv)) {
+            if ((elementContainsText(welcomeNameDiv, ("Welcome, " + loggedInUser + "!"))) ||
+                    elementContainsText(welcomeNameDiv, "Welcome, " + loggedInUserNameValue + "!")) {
+                System.out.println("The user is logged in");
+                loggedIn = true;
+            }
+        }
+//
+//        assertTrue((elementContainsText(welcomeNameDiv, ("Welcome, " + loggedInUser + "!"))) ||
+//        elementContainsText(welcomeNameDiv, loggedInUserNameValue));
 //        waitForElement(successDiv, defaultTimeOut);
 //        assertTrue(elementContainsText(successDiv, loggedInMessage));
     }
@@ -68,5 +78,11 @@ public class LoginPage extends TestBase {
         tryClick(logOutButton, defaultTimeOut);
         waitForElement(submitButton, defaultTimeOut);
         assertTrue(elementContainsText(logInDiv, "Please enter your login details."));
+    }
+
+    public void executeLogin(){
+        if (!loggedIn){
+            login(userNameValue, userPasswordValue);
+        }
     }
 }

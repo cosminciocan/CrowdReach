@@ -62,6 +62,7 @@ public class Constant {
     public static String shortNewPasswordMessage = "New password should be at least 8 characters long.";
     public static String incorrectOldPasswordMessage = "Invalid Password";
     public static String newAndConfirmPasswordMessage = "New and Confirm Password does not match.";
+    public static String passwordMinimumLengthMessage = "At least 8 characters long";
 
 
     //    files
@@ -93,11 +94,12 @@ public class Constant {
     @FindBy(id = "password")
     public WebElement passwordField;
 
-    @FindBy(className = "btn-default")
+    @FindBy(className = "btn-block")
     public WebElement saveChangesButton;
 
     @FindBy(className = "toast-error")
     public WebElement errorDiv;
+
 
 
     //    Header

@@ -20,6 +20,10 @@ public class EditUserProfilePage extends TestBase {
     public WebElement onewPasswordField;
     @FindBy(id = "registerConfirmPassword")
     public WebElement confirmPasswordField;
+    @FindBy(css = ".has-error.ng-binding")
+    public WebElement hasErrorSpan;
+    @FindBy(css = "div.has-error")
+    public WebElement passwordComplexityErrorDiv;
 
 
     public void openPage() {
@@ -55,7 +59,8 @@ public class EditUserProfilePage extends TestBase {
     }
 
     public void checkPwdToShortMessage() {
-        assertTrue(elementContainsText(errorDiv, shortNewPasswordMessage));
+//        assertTrue(elementContainsText(errorDiv, shortNewPasswordMessage));
+        assertTrue(elementContainsText(passwordComplexityErrorDiv, passwordMinimumLengthMessage));
     }
 
     public void checkConfirmPwdNotMatchMessage(){

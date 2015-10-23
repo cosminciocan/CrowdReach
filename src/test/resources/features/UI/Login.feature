@@ -1,7 +1,7 @@
 @ready
 Feature: Login feature
 
-  @sanity
+  @sanity @testDeploy
   Scenario: The user logs in
     Given I navigate to the Login page
     When I log in using my username and password

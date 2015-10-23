@@ -25,6 +25,9 @@ public class LoginPage extends TestBase {
     public WebElement logInDiv;
     @FindBy(css = ".has-error.ng-binding")
     public WebElement hasErrorSpan;
+    @FindBy(className = "toast-title")
+    public WebElement successDiv;
+
 
     public static String loggedInUserNameValue;
     public static boolean loggedIn = false;
@@ -76,6 +79,9 @@ public class LoginPage extends TestBase {
     }
 
     public void logOut() {
+        if(isElementPresent(successDiv)){
+            waitUntilElementNotPresent(successDiv, defaultTimeOut);
+        }
         tryClick(logOutButton, defaultTimeOut);
         waitForElement(submitButton, defaultTimeOut);
         assertTrue(elementContainsText(logInDiv, "Please enter your login details."));

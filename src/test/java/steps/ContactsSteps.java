@@ -60,7 +60,7 @@ public class ContactsSteps extends TestBase {
     }
 
 
-    @Then("^I check that all the fields are mandatory$")
+    @Then("^I check that all the required fields are mandatory$")
     public void I_check_that_all_the_fields_are_mandatory() throws Throwable {
         addContactsPage.checkMandatoryFields();
     }

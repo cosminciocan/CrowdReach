@@ -2,27 +2,26 @@
 Feature: Testing the adding of contacts
 
   Background: User login
-    Given I log in to the CrowdReach web-app
+    Given I check if I am logged in
 
-  @CRMVP-12 @sanity
+  @CRMVP-12 @sanity @ready
   Scenario: Ted wants to enter contacts manually
     Given I navigate to the Add Contacts Manually page
     And I complete all the mandatory fields
     Then I can successfully add the contact
-    And I log out
 
-  @CRMVP-14 @sanity
-  Scenario: Ted wants to import a CSV file with contacts
-    Given I navigate to the Import From CSV page
-    And I upload a file
-    Then I can map the fields in the file
-    And I can see the values being mapped
-    And I log out
+#  @CRMVP-14 @sanity #TODO: Still needs some fixing
+#  Scenario: Ted wants to import a CSV file with contacts
+#    Given I navigate to the Import From CSV page
+#    And I upload a file
+#    Then I can map the fields in the file
+#    And I can see the values being mapped
+#    And I log out
 
+    @ready
   Scenario: Check mandatory and type format fields for manual contacts import
     Given I navigate to the Add Contacts Manually page
-    Then I check that all the fields are mandatory
-    And I log out
+    Then I check that all the required fields are mandatory
 
 #TODO: Need some way to remove the arleady uploaded file
 #  Scenario: The user clicks next without uploading a file

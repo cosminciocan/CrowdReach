@@ -63,6 +63,7 @@ public class Constant {
     public static String incorrectOldPasswordMessage = "Invalid Password";
     public static String newAndConfirmPasswordMessage = "New and Confirm Password does not match.";
     public static String passwordMinimumLengthMessage = "At least 8 characters long";
+    public static String passwordMatchErrorMessage = "Passwords don't match.";
 
 
     //    files

@@ -31,6 +31,7 @@ public class CommunicationsSteps extends TestBase {
     @Given("^I navigate to the Communications Page$")
     public void I_navigate_to_the_Communications_Page() throws Throwable {
         communicationPage.openPage();
+        communicationPage.expandAccordion();
     }
 
     @When("^I complete the general message field with a text message$")

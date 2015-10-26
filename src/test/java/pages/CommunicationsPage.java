@@ -25,6 +25,8 @@ public class CommunicationsPage extends TestBase {
     public WebElement emailField;
     @FindBy(id = "textMessage")
     public WebElement textMessageField;
+    @FindBy(css = "i.fa-angle-down")
+    public WebElement expandAccordionButton;
 
 
     public void openPage() {
@@ -75,5 +77,11 @@ public class CommunicationsPage extends TestBase {
         assertFalse(elementContainsText(facebookField, message));
         assertFalse(elementContainsText(twitterField, message));
         assertFalse(elementContainsText(emailField, message));
+    }
+
+    public void expandAccordion(){
+        while (isElementPresent(expandAccordionButton)){
+            tryClick(expandAccordionButton,defaultTimeOut);
+        }
     }
 }

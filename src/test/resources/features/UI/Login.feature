@@ -1,6 +1,10 @@
 @ready
 Feature: Login feature
 
+  Background: Check If logged in
+    Given I check if I am logged in
+    And I log out
+
   @sanity
   Scenario: The user logs in
     Given I navigate to the Login page

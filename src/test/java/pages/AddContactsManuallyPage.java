@@ -66,28 +66,17 @@ public class AddContactsManuallyPage extends TestBase {
     }
 
     public void manualContactAdded() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("javascript:window.scrollBy(250,350)");
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        js.executeScript("javascript:window.scrollBy(250,350)");
         tryClick(submitButton, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, addedContactMessage));
     }
 
     public void checkMandatoryFields() {
         waitForElement(firstNameField, defaultTimeOut);
-        assertTrue(isAttribtuePresent(firstNameField, "required"));
-        assertTrue(isAttribtuePresent(lastNameField, "required"));
         assertTrue(isAttribtuePresent(phoneField, "required"));
         assertTrue(phoneField.getAttribute("type").equals("tel"));
-        assertTrue(isAttribtuePresent(twitterField, "required"));
         assertTrue(isAttribtuePresent(emailField, "required"));
         assertTrue(emailField.getAttribute("type").equals("email"));
-        assertTrue(isAttribtuePresent(facebookField, "required"));
-        assertTrue(isAttribtuePresent(address2Field, "required"));
-        assertTrue(isAttribtuePresent(countryField, "required"));
-        assertTrue(isAttribtuePresent(notesArea, "required"));
-        assertTrue(isAttribtuePresent(address1Field, "required"));
-        assertTrue(isAttribtuePresent(cityField, "required"));
-        assertTrue(isAttribtuePresent(stateField, "required"));
-        assertTrue(isAttribtuePresent(zipField, "required"));
     }
 }

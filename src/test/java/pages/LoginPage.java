@@ -32,7 +32,7 @@ public class LoginPage extends TestBase {
     public static String loggedInUserNameValue;
     public static boolean loggedIn = false;
 
-        // METHODS
+    // METHODS
     public void openPage() {
         driver.get(logInUrl);
     }
@@ -51,12 +51,15 @@ public class LoginPage extends TestBase {
     }
 
     public void confirmLoggedIn(String loggedInUser) {
-        if (isElementPresent(welcomeNameDiv)) {
+        if (isElementPresent(welcomeNameDiv) ||
+                !isTextPresent("I forgot my password")) {
             if ((elementContainsText(welcomeNameDiv, ("Welcome, " + loggedInUser + "!"))) ||
                     elementContainsText(welcomeNameDiv, "Welcome, " + loggedInUserNameValue + "!")) {
                 System.out.println("The user is logged in");
                 loggedIn = true;
             }
+        } else {
+            loggedIn = false;
         }
     }
 
@@ -73,7 +76,7 @@ public class LoginPage extends TestBase {
     }
 
     public void logOut() {
-        if(isElementPresent(successDiv)){
+        if (isElementPresent(successDiv)) {
             waitUntilElementNotPresent(successDiv, defaultTimeOut);
         }
         tryClick(logOutButton, defaultTimeOut);
@@ -81,13 +84,13 @@ public class LoginPage extends TestBase {
         assertTrue(elementContainsText(logInDiv, "Please enter your login details."));
     }
 
-    public void executeLogin(){
-        if (!loggedIn){
+    public void executeLogin() {
+        if (!loggedIn) {
             login(userNameValue, userPasswordValue);
         }
     }
 
-    public void checkLoggedOut(){
+    public void checkLoggedOut() {
         if (isTextPresent("Log Out"))
             logOut();
     }

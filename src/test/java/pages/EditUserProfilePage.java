@@ -24,6 +24,8 @@ public class EditUserProfilePage extends TestBase {
     public WebElement hasErrorSpan;
     @FindBy(css = "div.has-error")
     public WebElement passwordComplexityErrorDiv;
+    @FindBy(css = ".msg-error")
+    public WebElement passwrodMatchErrorSpan;
 
 
     public void openPage() {
@@ -64,6 +66,6 @@ public class EditUserProfilePage extends TestBase {
     }
 
     public void checkConfirmPwdNotMatchMessage(){
-        assertTrue(elementContainsText(errorDiv, newAndConfirmPasswordMessage));
+        assertTrue(elementContainsText(passwrodMatchErrorSpan, passwordMatchErrorMessage));
     }
 }

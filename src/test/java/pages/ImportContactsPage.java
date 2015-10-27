@@ -67,7 +67,7 @@ public class ImportContactsPage extends TestBase {
         waitForElement(importedValuesTable, defaultTimeOut);
     }
 
-    //    TODO: Make this method read text values form file
+    //    TODO: Make this method read table values form file
     public void checkImportedValues() {
         for (int i = 0; i < tableRowValues.size(); i++) {
             assertTrue(tableRowValues.get(i).getText().equals(tableValues.get(i)));

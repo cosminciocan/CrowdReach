@@ -59,11 +59,15 @@ public class ImportContactsPage extends TestBase {
             String mapNameValue = listOfMapFields.get(i).getText();
             (new Actions(driver)).dragAndDrop(listOfMapFields.get(i), fileFields.get(i)).perform();
             assertTrue(elementContainsText(fileFields.get(i), mapNameValue));
+            if (i == 5){
+                break;
+            }
         }
         tryClick(nextStepLink, defaultTimeOut);
         waitForElement(importedValuesTable, defaultTimeOut);
     }
 
+//    TODO: Make this method read text values form file
     public void checkImportedValues() {
         for (int i = 0; i < tableRowValues.size(); i++) {
             assertTrue(tableRowValues.get(i).getText().equals(tableValues.get(i)));

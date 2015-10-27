@@ -41,7 +41,7 @@ public class Constant {
 
     //VALUES
     public static int defaultTimeOut = Integer.parseInt(config().getProperty("defaultTimeOut"));
-    public static List tableValues = Arrays.asList("TestName1", "TestName2", "TestName3", "TestName4");
+    public static List tableValues = Arrays.asList("TestName1", "TestName2", "TestName3", "TestName4","TestName5", "TestName6");
     public static int textFieldDefaultLenght = 50;
     public static int textAreaDefaultLenght = 255;
     public static int generatedPasswordLength = 8;

@@ -10,13 +10,13 @@ Feature: Testing the adding of contacts
     And I complete all the mandatory fields
     Then I can successfully add the contact
 
-#  @CRMVP-14 @sanity #TODO: Still needs some fixing
-#  Scenario: Ted wants to import a CSV file with contacts
-#    Given I navigate to the Import From CSV page
-#    And I upload a file
-#    Then I can map the fields in the file
-#    And I can see the values being mapped
-#    And I log out
+#TODO: Still needs some fixing
+  @CRMVP-14 @sanity
+  Scenario: Ted wants to import a CSV file with contacts
+    Given I navigate to the Import From CSV page
+    And I upload a file
+    Then I can map the fields in the file
+    And I can see the values being mapped
 
     @ready
   Scenario: Check mandatory and type format fields for manual contacts import

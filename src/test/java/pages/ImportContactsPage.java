@@ -47,9 +47,9 @@ public class ImportContactsPage extends TestBase {
         waitForElement(importFileButton, defaultTimeOut);
         importField.sendKeys(pathToCSVFile);
 //        assertTrue(importField.getAttribute("type").equals("file"));
-        importField.sendKeys(pathToCSVFile);
+        if(isElementPresent(successDiv))
+            waitUntilElementNotPresent(successDiv,defaultTimeOut);
         tryClick(importFileButton, defaultTimeOut);
-        tryClick(successDiv, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, uploadedMessage));
     }
 
@@ -76,7 +76,7 @@ public class ImportContactsPage extends TestBase {
 
     public void nextStepWithoutCsvUpload() {
         waitUntilElementNotPresent(successDiv, defaultTimeOut);
-        waitForElement(importField, defaultTimeOut);
+        waitForElement(importFileButton, defaultTimeOut);
         importField.sendKeys(pathToCSVFile);
         tryClick(nextStepLink, defaultTimeOut);
     }

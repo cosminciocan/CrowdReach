@@ -24,11 +24,10 @@ Feature: Testing the adding of contacts
     Then I check that all the required fields are mandatory
 
 #TODO: Need some way to remove the arleady uploaded file
-#  Scenario: The user clicks next without uploading a file
-#    When I navigate to the Import From CSV page
-#    And I try to proceed to the next step without uploading a file
-#    Then I should see an error and remain on the same page
-#    And I log out
+  Scenario: The user clicks next without uploading a file
+    When I navigate to the Import From CSV page
+    And I try to proceed to the next step without uploading a file
+    Then I should see an error and remain on the same page
 
   #TODO: Need some way to remove the arleady uploaded file
 #  Scenario: Upload a wrong format file

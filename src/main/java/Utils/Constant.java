@@ -54,7 +54,7 @@ public class Constant {
     public static String registeredMessage = "Registration was successful";
     public static String uploadedMessage = "Your file was uploaded";
     public static String editedProfileMessage = "Successfully saved profile changes.";
-    public static String passwordChangedMessage = "";
+    public static String passwordChangedMessage = "Invalid type of file. Accepted types are .csv";
     public static String incorrectLoginDetailsMessage = "Username or password is incorrect. Please try again.";
     public static String incorrectLoginPassword = "Invalid Password";
     public static String pleaseUploadCSVMessage = "Please upload a csv file";

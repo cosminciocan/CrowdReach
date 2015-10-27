@@ -47,8 +47,8 @@ public class ImportContactsPage extends TestBase {
         waitForElement(importFileButton, defaultTimeOut);
         importField.sendKeys(pathToCSVFile);
 //        assertTrue(importField.getAttribute("type").equals("file"));
-        if(isElementPresent(successDiv))
-            waitUntilElementNotPresent(successDiv,defaultTimeOut);
+        if (isElementPresent(successDiv))
+            waitUntilElementNotPresent(successDiv, defaultTimeOut);
         tryClick(importFileButton, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, uploadedMessage));
     }
@@ -59,7 +59,7 @@ public class ImportContactsPage extends TestBase {
             String mapNameValue = listOfMapFields.get(i).getText();
             (new Actions(driver)).dragAndDrop(listOfMapFields.get(i), fileFields.get(i)).perform();
             assertTrue(elementContainsText(fileFields.get(i), mapNameValue));
-            if (i == 5){
+            if (i == 5) {
                 break;
             }
         }
@@ -67,7 +67,7 @@ public class ImportContactsPage extends TestBase {
         waitForElement(importedValuesTable, defaultTimeOut);
     }
 
-//    TODO: Make this method read text values form file
+    //    TODO: Make this method read text values form file
     public void checkImportedValues() {
         for (int i = 0; i < tableRowValues.size(); i++) {
             assertTrue(tableRowValues.get(i).getText().equals(tableValues.get(i)));
@@ -88,7 +88,7 @@ public class ImportContactsPage extends TestBase {
 
     public void uploadWrongFileFormat() {
         waitUntilElementNotPresent(successDiv, defaultTimeOut);
-        waitForElement(importField, defaultTimeOut);
+        waitForElement(importFileButton, defaultTimeOut);
         importField.sendKeys(pathToIMGFile);
         tryClick(importFileButton, defaultTimeOut);
     }

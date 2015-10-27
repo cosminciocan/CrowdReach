@@ -30,11 +30,8 @@ Feature: Testing the adding of contacts
     Then I should see an error and remain on the same page
 
   #TODO: Need some way to remove the arleady uploaded file
-#  Scenario: Upload a wrong format file
-#    When I navigate to the Import From CSV page
-#    And I try to upload a file type different than CSV
-#    Then the file should not be uploaded
-#    And I log out
-#
-#
+  Scenario: Upload a wrong format file
+    When I navigate to the Import From CSV page
+    And I try to upload a file type different than CSV
+    Then the file should not be uploaded
 

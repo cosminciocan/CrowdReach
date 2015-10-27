@@ -11,7 +11,7 @@ Feature: Testing the adding of contacts
     Then I can successfully add the contact
 
 #TODO: Still needs some fixing
-  @CRMVP-14 @sanity
+  @CRMVP-14 @sanity @ready
   Scenario: Ted wants to import a CSV file with contacts
     Given I navigate to the Import From CSV page
     And I upload a file

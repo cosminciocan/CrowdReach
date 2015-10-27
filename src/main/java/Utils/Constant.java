@@ -108,8 +108,10 @@ public class Constant {
     public WebElement successDiv;
     @FindBy(className = "cr-logged-user-name")
     public WebElement welcomeNameDiv;
-    @FindBy(className = "cr-logout")
+    @FindBy(css = ".dropdown-menu.dropdown-menu-right>li>a>span")
     public WebElement logOutButton;
+    @FindBy(css = "li.dropdown.bubble-dropdown:not(.open)")
+    public WebElement profileDropdownLink;
     @FindBy(className = "col-sm-10")
     public WebElement logInDiv;
     @FindBy(className = "cr-top-menu")

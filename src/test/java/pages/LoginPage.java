@@ -29,6 +29,7 @@ public class LoginPage extends TestBase {
     public WebElement successDiv;
 
 
+
     public static String loggedInUserNameValue;
     public static boolean loggedIn = false;
 
@@ -79,6 +80,8 @@ public class LoginPage extends TestBase {
         if (isElementPresent(successDiv)) {
             waitUntilElementNotPresent(successDiv, defaultTimeOut);
         }
+        if (isElementPresent(profileDropdownLink))
+            tryClick(profileDropdownLink,defaultTimeOut);
         tryClick(logOutButton, defaultTimeOut);
         waitForElement(submitButton, defaultTimeOut);
         assertTrue(elementContainsText(logInDiv, "Please enter your login details."));

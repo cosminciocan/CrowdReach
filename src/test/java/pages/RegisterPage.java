@@ -35,6 +35,12 @@ public class RegisterPage extends TestBase {
     public List typeSelect;
     @FindBy(css = ".btn-square[title^='Register']")
     public WebElement registerButton;
+    @FindBy(id = "registerAddress_value")
+    public WebElement registerAddressField;
+
+    @FindBy(id = "zip")
+    public WebElement registerZipField;
+
 
 
     //     Variables
@@ -181,6 +187,11 @@ public class RegisterPage extends TestBase {
         setText(userNameField, generateRandomAlphaNumeric(1));
         setText(passwordField, generateRandomAlphaNumeric(1));
         setText(confirmPasswordField, generateRandomAlphaNumeric(1));
+    }
+
+    public void completeAddressZip(){
+        setText(registerAddressField, validAddres);
+        setText(registerZipField, generateRandomNumber(5));
     }
 
 }

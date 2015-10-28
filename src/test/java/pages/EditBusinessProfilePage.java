@@ -44,7 +44,7 @@ public class EditBusinessProfilePage extends TestBase {
 
     public void setEditProfileDetails() {
         editName = generateRandomAlphaNumeric(8);
-        editAddress = "New York St, Aiken SC";
+        editAddress = validAddres;
         editPhone = generateRandomNumber(10);
         uploadImg();
         setText(addressField, editAddress);

@@ -90,4 +90,8 @@ public class RegistrationSteps extends TestBase {
         registerPage.checkFieldMaxLengthValidations();
     }
 
+    @And("^Ted fills his address and Zip code$")
+    public void Ted_fills_his_address_and_Zip_code() throws Throwable {
+        registerPage.completeAddressZip();
+    }
 }

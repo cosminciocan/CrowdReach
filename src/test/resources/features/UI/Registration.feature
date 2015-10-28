@@ -12,6 +12,7 @@ Feature: Testing the Registration functionality
     And Ted enters a username
     And Ted wants to enter his password twice for verification
     When Ted wants to identify his business type so that the features shall be tailored to his business
+    And Ted fills his address and Zip code
     Then Ted should be able to register successfully
     And Ted should be able to log in
 

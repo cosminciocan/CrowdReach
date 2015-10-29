@@ -3,7 +3,6 @@ Feature: Edit User Profile
 
   Background: Login
     Given I check if I am logged in
-#    Given I log in to the CrowdReach web-app
 
 #   Combine with register. And make a new registered user to make use of this functionality
 #   It's to risky to do this test with the normal user
@@ -18,7 +17,7 @@ Feature: Edit User Profile
 
 #  TODO: Uncomment when validations are applied
 #  Scenario: Checking password max length validations
-#    Given I navigate to the Edit User Profile page
+#    Given I navigate to the Change Password page
 #    Then I check the field max length validations
 
   @ready

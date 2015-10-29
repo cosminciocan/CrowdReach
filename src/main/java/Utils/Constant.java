@@ -41,6 +41,7 @@ public class Constant {
 
     //VALUES
     public static int defaultTimeOut = Integer.parseInt(config().getProperty("defaultTimeOut"));
+    public static String secretCode = config().getProperty("registerSecretCode");
     public static List tableValues = Arrays.asList("TestName1", "TestName2", "TestName3", "TestName4","TestName5", "TestName6");
     public static int textFieldDefaultLenght = 50;
     public static int textAreaDefaultLenght = 255;
@@ -95,12 +96,12 @@ public class Constant {
     public WebElement usernameField;
     @FindBy(id = "password")
     public WebElement passwordField;
-
     @FindBy(className = "btn-block")
     public WebElement saveChangesButton;
-
     @FindBy(className = "toast-error")
     public WebElement errorDiv;
+    @FindBy(css = "div.angucomplete-description.ng-binding.ng-scope")
+    public WebElement selectAddress;
 
 
 

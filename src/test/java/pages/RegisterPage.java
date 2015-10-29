@@ -40,7 +40,8 @@ public class RegisterPage extends TestBase {
 
     @FindBy(id = "zip")
     public WebElement registerZipField;
-
+    @FindBy(id = "checkSecretCode")
+    public WebElement secretCodeField;
 
 
     //     Variables
@@ -191,6 +192,7 @@ public class RegisterPage extends TestBase {
 
     public void completeAddressZip(){
         setText(registerAddressField, validAddres);
+        tryClick(selectAddress, defaultTimeOut);
         setText(registerZipField, generateRandomNumber(5));
     }
 

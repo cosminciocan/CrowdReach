@@ -24,8 +24,7 @@ public class EditBusinessProfilePage extends TestBase {
     public WebElement uploadedImage;
     @FindBy(className = "cr-delete-profile-logo-img")
     public WebElement deleteLogoButton;
-    @FindBy(css = "div.angucomplete-description.ng-binding.ng-scope")
-    public WebElement selectAddress;
+
     @FindBy(id = "zipCode")
     public WebElement zipCodeField;
 

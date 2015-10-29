@@ -94,4 +94,10 @@ public class RegistrationSteps extends TestBase {
     public void Ted_fills_his_address_and_Zip_code() throws Throwable {
         registerPage.completeAddressZip();
     }
+
+    @And("^I enter the secret code$")
+    public void I_enter_the_secret_code() throws Throwable {
+        setText(registerPage.secretCodeField, secretCode);
+    }
+
 }

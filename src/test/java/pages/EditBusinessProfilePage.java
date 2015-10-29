@@ -65,8 +65,6 @@ public class EditBusinessProfilePage extends TestBase {
         openPage();
         waitForElement(uploadedImage, defaultTimeOut);
         assertTrue(elementContainsText(nameField, editName));
-//        assertTrue(elementContainsText(addressField, editAddress));
-//        assertTrue(elementContainsText(phoneField, editPhone));
     }
 
     public void checFieldsFormat() {

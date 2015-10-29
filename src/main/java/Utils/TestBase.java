@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+// This abstract class contains the common methods that are used in multiple classes
 
 public abstract class TestBase extends Constant {
 
@@ -39,22 +40,24 @@ public abstract class TestBase extends Constant {
         }
     }
 
+//    Waits for an element to be present and visible on the page
     public void waitForElement(WebElement element, int timeOutSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, timeOutSeconds);
-
+//           The below ExpectedConditions actions are commented because they
+//        are an alternative to this method. I found them to not be as reliable
+//           Change them as desired.
 //           wait.until(ExpectedConditions.visibilityOf(element));
 //           wait.until(ExpectedConditions.elementToBeClickable(element));
 //
 //       }
+
+        WebDriverWait wait = new WebDriverWait(driver, timeOutSeconds);
         int timeOutTime = 0;
         boolean present = false;
-//
         while (!isElementPresent(element)) {
             try {
                 Thread.sleep(10);
             } catch (Exception e) {
                 e.printStackTrace();
-
             }
             timeOutTime++;
             if (timeOutTime == timeOutSeconds) {
@@ -63,60 +66,54 @@ public abstract class TestBase extends Constant {
                 break;
             }
         }
-//
         Assert.assertFalse(present);
     }
 
     //  This method returns a boolean value if the element is found/not found
     public static boolean isElementPresent(WebElement element) {
-
         WebDriverWait wait = new WebDriverWait(driver, 1);
-
-//        boolean exists = false;
-//
-//        driver.manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS);
-
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
 //            element.getTagName();
 //            element.isDisplayed();
 //            exists = true;
-
             return true;
         } catch (Throwable e) {
             return false;
-            /// Do nothing!
         }
-//        driver.manage().timeouts().implicitlyWait(1000, TimeUnit.MILLISECONDS);
-//
-//        return exists;
     }
 
+//    Returns a random String of length
     public String generateRandomString(int length) {
         return RandomStringUtils.randomAlphabetic(length);
     }
 
+    //    Returns a random Integer of length
     public String generateRandomNumber(int length) {
         return RandomStringUtils.randomNumeric(length);
     }
 
+//    This method returns an alphanumeric String that ends in a 2 character long Int
+//    This is done to ensure it will always return an alphanumeric value
     public String generateRandomAlphaNumeric(int length) {
-         String y = "";
+        String y = "";
         String x = "";
-        if (length > 2){
-             y = RandomStringUtils.randomNumeric(2);
-             x = RandomStringUtils.randomAlphanumeric(length - 2);
+        if (length > 2) {
+            y = RandomStringUtils.randomNumeric(2);
+            x = RandomStringUtils.randomAlphanumeric(length - 2);
         } else
-        x = RandomStringUtils.randomAlphanumeric(length);
+            x = RandomStringUtils.randomAlphanumeric(length);
         return x + y;
     }
 
+//    Returns a String with the current date with the given date format
     public static String setDateNow() throws ParseException {
         java.util.Date d = new Date();
         SimpleDateFormat sd = new SimpleDateFormat("MM/dd/yyyy");
         return sd.format(d);
     }
 
+//    Sleep method
     public void Sleep(double seconds) {
         double milliseconds = seconds * 1000;
         try {
@@ -126,25 +123,24 @@ public abstract class TestBase extends Constant {
         }
     }
 
+
+//    Verifies if the given text is prezent in the page source
     public boolean isTextPresent(String text) {
-        while (isAlertPresent()) {
-            driver.switchTo().alert().accept();
-        }
         if (Driver.getWebdriver().getPageSource().contains(text)) {
             System.out.println("Text found");
             return true;
         } else {
-            System.out.println("Expected text not found in the page source!");
+            System.out.println("Text not found");
             return false;
         }
     }
 
+//      Verifies if an element contains some text
+//    This can be implemented using ExpectedConditions as well
+//    However, I've noticed it's not extremely reliable
     public boolean elementContainsText(WebElement element, String text) {
-//        waitForElement(element, defaultTimeOut);
 //        WebDriverWait wait = new WebDriverWait(driver, defaultTimeOut);
 //        waitForElement(element,defaultTimeOut);
-
-
 //        try {
 //            ExpectedConditions.textToBePresentInElement(element, text);
 //            return true;
@@ -152,7 +148,6 @@ public abstract class TestBase extends Constant {
 //            System.err.println(e);
 //            return false;
 //        }
-
         waitForElement(element, defaultTimeOut);
         if (element.getText().contains(text)) {
             return true;
@@ -165,20 +160,7 @@ public abstract class TestBase extends Constant {
         }
     }
 
-//    public boolean fieldContainsText(WebElement element, String text) {
-//        waitForElement(element, defaultTimeOut);
-////        WebDriverWait wait = new WebDriverWait(driver, defaultTimeOut);
-//
-//        try {
-//            ExpectedConditions.textToBePresentInElementValue(element, text);
-//            return true;
-//        } catch (Exception er) {
-//            System.err.println(er);
-//            return false;
-//        }
-//    }
-
-
+//  Waits until the element is no longer visible
     //TODO: Refactor this !
     public void waitUntilElementNotPresent(WebElement element, int timeOutSeconds) {
         int timeOutTime = 0;
@@ -271,7 +253,6 @@ public abstract class TestBase extends Constant {
 //  Do nothing
         return result;
     }
-
 
 
 ////    Run JS

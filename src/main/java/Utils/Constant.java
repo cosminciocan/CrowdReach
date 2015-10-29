@@ -15,7 +15,8 @@ import java.util.List;
 import static webdriver.Driver.config;
 import static webdriver.Driver.getWebdriver;
 
-
+//  This class is used to store the Constant values
+//  And the locators that are re-used on multiple pages (common locators)
 
 public class Constant {
 
@@ -47,7 +48,6 @@ public class Constant {
     public static int textAreaDefaultLenght = 255;
     public static int generatedPasswordLength = 8;
     public static String validAddres = "New York St, Aiken SC";
-
 
     //    Messages
     public static String logOutButtonText = "LOG OUT";

@@ -40,7 +40,7 @@ public class RegisterPage extends TestBase {
 
     @FindBy(id = "zip")
     public WebElement registerZipField;
-    @FindBy(id = "checkSecretCode")
+    @FindBy(id = "secretCode")
     public WebElement secretCodeField;
 
 

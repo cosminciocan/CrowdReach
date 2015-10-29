@@ -3,7 +3,7 @@ package test;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
-
+//This is the glue file. It makes the connection between the features and the steps
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber/","json:target/jsonReports/TestResults.json","junit:target/junitReports/TestResults.xml"},

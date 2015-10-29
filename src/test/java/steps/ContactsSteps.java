@@ -23,7 +23,6 @@ public class ContactsSteps extends TestBase {
         importContactsPage = PageFactory.initElements(Driver.getWebdriver(), ImportContactsPage.class);
     }
 
-
     @Given("^I navigate to the Add Contacts Manually page$")
     public void I_navigate_to_the_Add_Contacts_Manually_page() throws Throwable {
         addContactsPage.openPage();

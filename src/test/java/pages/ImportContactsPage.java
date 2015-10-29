@@ -18,7 +18,6 @@ public class ImportContactsPage extends TestBase {
 
     private String url = baseUrl + importContactsPath;
 
-
     @FindBy(css = ".cr-file-upload .form-control")
     public WebElement importField;
     @FindBy(css = ".btn-square.pull-right")
@@ -36,11 +35,9 @@ public class ImportContactsPage extends TestBase {
     @FindBy(className = "table-striped")
     public WebElement importedValuesTable;
 
-
     public void openPage() {
         driver.get(url);
     }
-
 
     public void uploadFile() {
         waitUntilElementNotPresent(successDiv, defaultTimeOut);

@@ -43,15 +43,12 @@ public class RegisterPage extends TestBase {
     @FindBy(id = "secretCode")
     public WebElement secretCodeField;
 
-
     //     Variables
     public String typeOfBusinessDropdown = "businessType";
-
 
     public void openPage() {
         driver.get(url);
     }
-
 
     public void setEmailField() {
         emailValue = (generateRandomString(8) + userNameEmailDomain);
@@ -88,12 +85,8 @@ public class RegisterPage extends TestBase {
         waitUntilElementNotPresent(successDiv, defaultTimeOut);
         tryClick(submitButton, defaultTimeOut);
         waitForElement(successDiv, defaultTimeOut);
-//        Sleep(0.5);
-//        tryClick(successDiv, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, registeredMessage));
-
     }
-
 
     public void checkMandatoryField(int field) {
         waitUntilElementNotPresent(successDiv, defaultTimeOut);
@@ -161,13 +154,6 @@ public class RegisterPage extends TestBase {
 
     public void checkFieldMaxLengthValidations() {
         waitForElement(emailField, defaultTimeOut);
-//        Debug Purposes
-//        js = (JavascriptExecutor) driver;
-//        js.executeScript("document.getElementById(\"registerEmail\").setAttribute(\"maxlength\" , \"50\")");
-//        js.executeScript("document.getElementById(\"registerUsername\").setAttribute(\"maxlength\" , \"50\")");
-//        js.executeScript("document.getElementById(\"registerPassword\").setAttribute(\"maxlength\" , \"50\")");
-//        js.executeScript("document.getElementById(\"registerConfirmPassword\").setAttribute(\"maxlength\" , \"50\")");
-
         String maxLength = "" + textFieldDefaultLenght;
         assertTrue(userNameField.getAttribute("maxlength").equals(maxLength));
         assertTrue(emailField.getAttribute("maxlength").equals(maxLength));

@@ -13,9 +13,6 @@ import webdriver.Driver;
 
 import static junit.framework.Assert.*;
 
-/***
- * Created by cciocan on 02-Sep-15.
- */
 public class CommunicationsSteps extends TestBase {
     protected CommunicationsPage communicationPage;
     public String generalMessageValue;
@@ -77,7 +74,6 @@ public class CommunicationsSteps extends TestBase {
 
             default:
                 fail("Incorrect supplied value!");
-
         }
     }
 

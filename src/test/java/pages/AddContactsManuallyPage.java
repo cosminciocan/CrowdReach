@@ -66,8 +66,6 @@ public class AddContactsManuallyPage extends TestBase {
     }
 
     public void manualContactAdded() {
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("javascript:window.scrollBy(250,350)");
         tryClick(submitButton, defaultTimeOut);
         assertTrue(elementContainsText(successDiv, addedContactMessage));
     }

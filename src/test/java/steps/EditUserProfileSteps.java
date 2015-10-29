@@ -24,8 +24,6 @@ public class EditUserProfileSteps extends TestBase {
     protected LoginPage loginPage;
     public String loggedInUser;
 
-
-
     public EditUserProfileSteps() {
         editUserProfilePage = PageFactory.initElements(Driver.getWebdriver(), EditUserProfilePage.class);
         loginPage = PageFactory.initElements(Driver.getWebdriver(), LoginPage.class);
@@ -43,7 +41,6 @@ public class EditUserProfileSteps extends TestBase {
         newPassword = generateRandomAlphaNumeric(generatedPasswordLength);
         password = editUserProfilePage.changePassword(userPasswordValue, newPassword, newPassword);
         editUserProfilePage.checkPasswordChanged();
-
     }
 
     @Then("^I should be able to login using that password$")
@@ -54,13 +51,11 @@ public class EditUserProfileSteps extends TestBase {
         loginPage.confirmLoggedIn(loggedInUser);
     }
 
-
     @Then("^I set the default password for the test account$")
     public void I_set_the_default_password_for_the_test_account() throws Throwable {
         password = editUserProfilePage.changePassword(newPassword, userPasswordValue, userPasswordValue);
         editUserProfilePage.checkPasswordChanged();
     }
-
 
     @When("^I check the field max length validations$")
     public void I_check_the_field_validations() throws Throwable {
@@ -77,7 +72,6 @@ public class EditUserProfileSteps extends TestBase {
     public void I_enter_a_password_shorter_than_characters(int arg1) throws Throwable {
         newPassword = generateRandomAlphaNumeric(arg1);
         editUserProfilePage.changePassword(userPasswordValue, newPassword, newPassword);
-
     }
 
     @Then("^I should see an error message regarding the old password$")

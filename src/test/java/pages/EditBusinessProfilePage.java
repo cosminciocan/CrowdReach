@@ -12,23 +12,18 @@ public class EditBusinessProfilePage extends TestBase {
 
     public String url = baseUrl + editBusinessProfilePath;
 
-
     @FindBy(id = "profileName")
     public WebElement nameField;
     @FindBy(id = "profileAddress_value")
     public WebElement addressField;
     @FindBy(id = "profilePhone")
     public WebElement phoneField;
-    //    @FindBy(css = ".ng-pristine.ng-valid-mask.ng-valid.ng-valid-required>img")
     @FindBy(css = ".cr-business-logo>img:not(.ng-hide)")
     public WebElement uploadedImage;
     @FindBy(className = "cr-delete-profile-logo-img")
     public WebElement deleteLogoButton;
-
     @FindBy(id = "zipCode")
     public WebElement zipCodeField;
-
-
     @FindBy(id = "crChooseFile")
     public WebElement uploadField;
 
@@ -39,7 +34,6 @@ public class EditBusinessProfilePage extends TestBase {
     public void openPage() {
         driver.get(url);
     }
-
 
     public void setEditProfileDetails() {
         editName = generateRandomAlphaNumeric(8);

@@ -17,7 +17,6 @@ Feature: Testing the adding of contacts
     Then I can map the fields in the file
     And I can see the values being mapped
 
-
   Scenario: Check mandatory and type format fields for manual contacts import
     Given I navigate to the Add Contacts Manually page
     Then I check that all the required fields are mandatory

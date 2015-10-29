@@ -12,7 +12,6 @@ import pages.LoginPage;
 import pages.RegisterPage;
 import webdriver.Driver;
 
-
 public class RegistrationSteps extends TestBase {
     protected Homepage homepage;
     protected RegisterPage registerPage;

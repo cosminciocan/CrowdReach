@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import pages.EditBusinessProfilePage;
 import webdriver.Driver;
 
-
 public class EditBusinessProfileSteps extends TestBase{
     protected EditBusinessProfilePage editBusinessProfilePage;
 
@@ -47,5 +46,4 @@ public class EditBusinessProfileSteps extends TestBase{
     public void the_logo_chage_should_be_saved() throws Throwable {
         editBusinessProfilePage.checkLogo();
     }
-
 }

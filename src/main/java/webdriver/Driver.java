@@ -27,7 +27,7 @@ public class Driver {
             browser = System.getProperty("browser").toLowerCase();
         } catch (NullPointerException e) {
             System.out.println("No browser specified in the command line, using [CHROME] by default");
-            browser = "chrome";
+            browser = "chrome";  // Set the run browser
         }
         switch (browser) {
             case "firefox":
@@ -76,7 +76,7 @@ public class Driver {
             environment = System.getProperty("env").toLowerCase();
         } catch (NullPointerException e) {
             System.out.println("No environment specified in the command line. Using [local] by default.");
-            environment = "stage";
+            environment = "stage"; // Set the run properties file
         }
         try {
             stream = new FileInputStream("src/main/resources/" + environment + ".properties");

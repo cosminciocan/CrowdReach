@@ -7,9 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 import static junit.framework.Assert.*;
 
-/***
- * Created by cciocan on 28-Aug-15.
- */
 public class EditUserProfilePage extends TestBase {
 
     public String url = baseUrl + editUserProfilePath;
@@ -26,7 +23,6 @@ public class EditUserProfilePage extends TestBase {
     public WebElement passwordComplexityErrorDiv;
     @FindBy(css = ".msg-error")
     public WebElement passwrodMatchErrorSpan;
-
 
     public void openPage() {
         driver.get(url);
@@ -61,7 +57,6 @@ public class EditUserProfilePage extends TestBase {
     }
 
     public void checkPwdToShortMessage() {
-//        assertTrue(elementContainsText(errorDiv, shortNewPasswordMessage));
         assertTrue(elementContainsText(passwordComplexityErrorDiv, passwordMinimumLengthMessage));
     }
 

@@ -12,7 +12,6 @@ import pages.LoginPage;
 import pages.RegisterPage;
 import webdriver.Driver;
 
-
 public class LoginSteps extends TestBase {
     protected LoginPage loginPage;
     public String loggedInUser;
@@ -78,6 +77,5 @@ public class LoginSteps extends TestBase {
         loginPage.executeLogin();
         loginPage.confirmLoggedIn(loggedInUser);
     }
-
 
 }

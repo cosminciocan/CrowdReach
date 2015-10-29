@@ -40,8 +40,8 @@ public abstract class TestBase extends Constant {
         }
     }
 
-//    Waits for an element to be present and visible on the page
     public void waitForElement(WebElement element, int timeOutSeconds) {
+        //    Waits for an element to be present and visible on the page
 //           The below ExpectedConditions actions are commented because they
 //        are an alternative to this method. I found them to not be as reliable
 //           Change them as desired.
@@ -69,8 +69,8 @@ public abstract class TestBase extends Constant {
         Assert.assertFalse(present);
     }
 
-    //  This method returns a boolean value if the element is found/not found
     public static boolean isElementPresent(WebElement element) {
+        //  This method returns a boolean value if the element is found/not found
         WebDriverWait wait = new WebDriverWait(driver, 1);
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
@@ -83,19 +83,19 @@ public abstract class TestBase extends Constant {
         }
     }
 
-//    Returns a random String of length
     public String generateRandomString(int length) {
+        //    Returns a random String of length
         return RandomStringUtils.randomAlphabetic(length);
     }
 
-    //    Returns a random Integer of length
     public String generateRandomNumber(int length) {
+        //    Returns a random Integer of length
         return RandomStringUtils.randomNumeric(length);
     }
 
+    public String generateRandomAlphaNumeric(int length) {
 //    This method returns an alphanumeric String that ends in a 2 character long Int
 //    This is done to ensure it will always return an alphanumeric value
-    public String generateRandomAlphaNumeric(int length) {
         String y = "";
         String x = "";
         if (length > 2) {
@@ -106,15 +106,15 @@ public abstract class TestBase extends Constant {
         return x + y;
     }
 
-//    Returns a String with the current date with the given date format
     public static String setDateNow() throws ParseException {
+        //    Returns a String with the current date with the given date format
         java.util.Date d = new Date();
         SimpleDateFormat sd = new SimpleDateFormat("MM/dd/yyyy");
         return sd.format(d);
     }
 
-//    Sleep method
     public void Sleep(double seconds) {
+        //    Sleep method
         double milliseconds = seconds * 1000;
         try {
             Thread.sleep((long) milliseconds);
@@ -124,8 +124,8 @@ public abstract class TestBase extends Constant {
     }
 
 
-//    Verifies if the given text is prezent in the page source
     public boolean isTextPresent(String text) {
+        //    Verifies if the given text is prezent in the page source
         if (Driver.getWebdriver().getPageSource().contains(text)) {
             System.out.println("Text found");
             return true;
@@ -135,10 +135,11 @@ public abstract class TestBase extends Constant {
         }
     }
 
-//      Verifies if an element contains some text
+    public boolean elementContainsText(WebElement element, String text) {
+        //      Verifies if an element contains some text
 //    This can be implemented using ExpectedConditions as well
 //    However, I've noticed it's not extremely reliable
-    public boolean elementContainsText(WebElement element, String text) {
+
 //        WebDriverWait wait = new WebDriverWait(driver, defaultTimeOut);
 //        waitForElement(element,defaultTimeOut);
 //        try {
@@ -160,9 +161,9 @@ public abstract class TestBase extends Constant {
         }
     }
 
-//  Waits until the element is no longer visible
     //TODO: Refactor this !
     public void waitUntilElementNotPresent(WebElement element, int timeOutSeconds) {
+        //  Waits until the element is no longer visible
         int timeOutTime = 0;
         timeOutSeconds = timeOutSeconds * 1000;
         boolean present = false;
@@ -182,57 +183,28 @@ public abstract class TestBase extends Constant {
         Assert.assertFalse(present);
     }
 
-    public boolean isAlertPresent() {
-        try {
-            driver.switchTo().alert();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
     public void tryClick(WebElement element, int timeOutSeconds) {
-//        boolean found;
-//        int count = 0; //Count needed for checking the Make Reservation button
-//        timeOutSeconds = timeOutSeconds * 10;
-//        do {
-//            try {
-////                WebDriverWait wait = new WebDriverWait(driver, timeOutSeconds);
-////                wait.until(ExpectedConditions.elementToBeClickable(element));
-//                element.click();
-//                found = true;
-//            } catch (Exception e) {
-//                found = false;
-//                Sleep(0.1);
-//            }
-//            if (count == timeOutSeconds) {
-//                Assert.fail("Element not found!");
-//                break;
-//            }
-//            count++;
-//        } while (!found);
-
+        //    Wait for element and click
         waitForElement(element, timeOutSeconds);
         element.click();
-
-//    }
-
     }
 
     public int randomWithRange(int min, int max) {
+        //    Returns a random int value, between two values
         int range = (max - min);
         return (int) (Math.random() * range) + min;
     }
 
     public void setText(WebElement element, String text) {
+        //    Sets the given text in the text area
         waitForElement(element, defaultTimeOut);
         element.clear();
         element.sendKeys(text);
         elementContainsText(element, text);
     }
 
-    //    Sets value to a text field. If left empty it sets a random value
     public void setFieldValue(WebElement element, String... a) {
+        //    Sets value to a text field. If left empty it sets a random alphanumeric value
         if (a.length == 0) {
             setText(element, generateRandomAlphaNumeric(10));
         } else {
@@ -242,6 +214,7 @@ public abstract class TestBase extends Constant {
     }
 
     public boolean isAttribtuePresent(WebElement element, String attribute) {
+        //    Checks if the element has the given attribute
         Boolean result = false;
         try {
             String value = element.getAttribute(attribute);
@@ -250,10 +223,8 @@ public abstract class TestBase extends Constant {
             }
         } catch (Exception ignored) {
         }
-//  Do nothing
         return result;
     }
-
 
 ////    Run JS
 //      JavascriptExecutor js;
